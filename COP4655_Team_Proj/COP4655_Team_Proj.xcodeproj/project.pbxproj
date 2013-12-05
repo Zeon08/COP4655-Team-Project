@@ -25,6 +25,7 @@
 		820DBF981843DC5500E2B343 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF971843DC5500E2B343 /* Default.png */; };
 		820DBF9A1843DC5500E2B343 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF991843DC5500E2B343 /* Default@2x.png */; };
 		820DBF9C1843DC5500E2B343 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF9B1843DC5500E2B343 /* Default-568h@2x.png */; };
+		82F744F61851128F006EAC11 /* WriteUpStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F744F51851128F006EAC11 /* WriteUpStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		820DBF971843DC5500E2B343 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		820DBF991843DC5500E2B343 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		820DBF9B1843DC5500E2B343 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		82F744F41851128F006EAC11 /* WriteUpStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteUpStore.h; sourceTree = "<group>"; };
+		82F744F51851128F006EAC11 /* WriteUpStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteUpStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 		820DBF791843DC5500E2B343 = {
 			isa = PBXGroup;
 			children = (
+				82F744F41851128F006EAC11 /* WriteUpStore.h */,
+				82F744F51851128F006EAC11 /* WriteUpStore.m */,
 				27309F9C18503854006CD2F9 /* WriteUp.h */,
 				27309F9D18503854006CD2F9 /* WriteUp.m */,
 				27309F9918503854006CD2F9 /* Company.h */,
@@ -210,6 +215,7 @@
 				27309F9818503854006CD2F9 /* Truck.m in Sources */,
 				27309F9B18503854006CD2F9 /* Company.m in Sources */,
 				27309F9E18503854006CD2F9 /* WriteUp.m in Sources */,
+				82F744F61851128F006EAC11 /* WriteUpStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

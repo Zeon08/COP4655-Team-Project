@@ -30,7 +30,7 @@
         <relationship name="truck" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Truck" inverseName="writeUps" inverseEntity="Truck" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Company" positionX="-3825" positionY="-2610" width="128" height="58"/>
+        <element name="Company" positionX="-3942" positionY="-2565" width="128" height="118"/>
         <element name="Truck" positionX="-3395" positionY="-2547" width="128" height="133"/>
         <element name="WriteUp" positionX="-3764" positionY="-2314" width="128" height="223"/>
     </elements>
