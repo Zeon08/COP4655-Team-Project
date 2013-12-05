@@ -28,6 +28,14 @@
         
         UINavigationItem *n = [self navigationItem];
         
+        UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rech.png"]];
+        n.titleView = img;
+        
+        searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        
+        searchBar.delegate = (id)self;
+        
+        self.tableView.tableHeaderView = searchBar;
         
         
     }

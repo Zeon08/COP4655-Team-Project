@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27AE0CAC18500C9D00610BCF /* rech.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AE0CAB18500C9D00610BCF /* rech.png */; };
+		27AE0CAF18500EB600610BCF /* Trucks.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE0CAE18500EB600610BCF /* Trucks.m */; };
+		27AE0CB218500EDD00610BCF /* WriteUps.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE0CB118500EDD00610BCF /* WriteUps.m */; };
 		27E6311F184FE958001F9760 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6311E184FE958001F9760 /* Company.m */; };
 		27E63121184FEB39001F9760 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E63120184FEB39001F9760 /* CoreData.framework */; };
 		27E63125184FEBC3001F9760 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E63123184FEBC3001F9760 /* CompanyViewController.m */; };
@@ -24,6 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27AE0CAB18500C9D00610BCF /* rech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rech.png; sourceTree = "<group>"; };
+		27AE0CAD18500EB600610BCF /* Trucks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trucks.h; sourceTree = "<group>"; };
+		27AE0CAE18500EB600610BCF /* Trucks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trucks.m; sourceTree = "<group>"; };
+		27AE0CB018500EDD00610BCF /* WriteUps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteUps.h; sourceTree = "<group>"; };
+		27AE0CB118500EDD00610BCF /* WriteUps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteUps.m; sourceTree = "<group>"; };
 		27E6311D184FE958001F9760 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		27E6311E184FE958001F9760 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		27E63120184FEB39001F9760 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -64,6 +72,10 @@
 		820DBF791843DC5500E2B343 = {
 			isa = PBXGroup;
 			children = (
+				27AE0CB018500EDD00610BCF /* WriteUps.h */,
+				27AE0CB118500EDD00610BCF /* WriteUps.m */,
+				27AE0CAD18500EB600610BCF /* Trucks.h */,
+				27AE0CAE18500EB600610BCF /* Trucks.m */,
 				27E6311D184FE958001F9760 /* Company.h */,
 				27E6311E184FE958001F9760 /* Company.m */,
 				820DBF8B1843DC5500E2B343 /* COP4655_Team_Proj */,
@@ -107,6 +119,7 @@
 		820DBF8C1843DC5500E2B343 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				27AE0CAB18500C9D00610BCF /* rech.png */,
 				820DBF8D1843DC5500E2B343 /* COP4655_Team_Proj-Info.plist */,
 				820DBF8E1843DC5500E2B343 /* InfoPlist.strings */,
 				820DBF911843DC5500E2B343 /* main.m */,
@@ -176,6 +189,7 @@
 				820DBF9C1843DC5500E2B343 /* Default-568h@2x.png in Resources */,
 				27E63126184FEBC3001F9760 /* CompanyViewController.xib in Resources */,
 				27E63128184FFDEC001F9760 /* Data.plist in Resources */,
+				27AE0CAC18500C9D00610BCF /* rech.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +204,8 @@
 				820DBF961843DC5500E2B343 /* AppDelegate.m in Sources */,
 				27E6311F184FE958001F9760 /* Company.m in Sources */,
 				27E63125184FEBC3001F9760 /* CompanyViewController.m in Sources */,
+				27AE0CAF18500EB600610BCF /* Trucks.m in Sources */,
+				27AE0CB218500EDD00610BCF /* WriteUps.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

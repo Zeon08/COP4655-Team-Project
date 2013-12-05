@@ -12,6 +12,7 @@
 @interface CompanyViewController : UITableViewController
 {
     Company *theCompanies;
+    UISearchBar *searchBar;
 }
 
 @property (nonatomic, retain) Company *theCompanies;
