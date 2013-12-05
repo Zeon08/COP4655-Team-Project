@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27309F95185032F1006CD2F9 /* Rechtien.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27309F93185032F1006CD2F9 /* Rechtien.xcdatamodeld */; };
+		27309F9818503854006CD2F9 /* Truck.m in Sources */ = {isa = PBXBuildFile; fileRef = 27309F9718503854006CD2F9 /* Truck.m */; };
+		27309F9B18503854006CD2F9 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 27309F9A18503854006CD2F9 /* Company.m */; };
+		27309F9E18503854006CD2F9 /* WriteUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27309F9D18503854006CD2F9 /* WriteUp.m */; };
 		27AE0CAC18500C9D00610BCF /* rech.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AE0CAB18500C9D00610BCF /* rech.png */; };
-		27AE0CAF18500EB600610BCF /* Trucks.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE0CAE18500EB600610BCF /* Trucks.m */; };
-		27AE0CB218500EDD00610BCF /* WriteUps.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE0CB118500EDD00610BCF /* WriteUps.m */; };
-		27E6311F184FE958001F9760 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6311E184FE958001F9760 /* Company.m */; };
 		27E63121184FEB39001F9760 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E63120184FEB39001F9760 /* CoreData.framework */; };
 		27E63125184FEBC3001F9760 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E63123184FEBC3001F9760 /* CompanyViewController.m */; };
 		27E63126184FEBC3001F9760 /* CompanyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E63124184FEBC3001F9760 /* CompanyViewController.xib */; };
@@ -27,13 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27309F94185032F1006CD2F9 /* Rechtien.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Rechtien.xcdatamodel; sourceTree = "<group>"; };
+		27309F9618503854006CD2F9 /* Truck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Truck.h; sourceTree = "<group>"; };
+		27309F9718503854006CD2F9 /* Truck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Truck.m; sourceTree = "<group>"; };
+		27309F9918503854006CD2F9 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		27309F9A18503854006CD2F9 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		27309F9C18503854006CD2F9 /* WriteUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteUp.h; sourceTree = "<group>"; };
+		27309F9D18503854006CD2F9 /* WriteUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteUp.m; sourceTree = "<group>"; };
 		27AE0CAB18500C9D00610BCF /* rech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rech.png; sourceTree = "<group>"; };
-		27AE0CAD18500EB600610BCF /* Trucks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trucks.h; sourceTree = "<group>"; };
-		27AE0CAE18500EB600610BCF /* Trucks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trucks.m; sourceTree = "<group>"; };
-		27AE0CB018500EDD00610BCF /* WriteUps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteUps.h; sourceTree = "<group>"; };
-		27AE0CB118500EDD00610BCF /* WriteUps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteUps.m; sourceTree = "<group>"; };
-		27E6311D184FE958001F9760 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
-		27E6311E184FE958001F9760 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		27E63120184FEB39001F9760 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		27E63122184FEBC3001F9760 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
 		27E63123184FEBC3001F9760 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
@@ -72,12 +74,13 @@
 		820DBF791843DC5500E2B343 = {
 			isa = PBXGroup;
 			children = (
-				27AE0CB018500EDD00610BCF /* WriteUps.h */,
-				27AE0CB118500EDD00610BCF /* WriteUps.m */,
-				27AE0CAD18500EB600610BCF /* Trucks.h */,
-				27AE0CAE18500EB600610BCF /* Trucks.m */,
-				27E6311D184FE958001F9760 /* Company.h */,
-				27E6311E184FE958001F9760 /* Company.m */,
+				27309F9C18503854006CD2F9 /* WriteUp.h */,
+				27309F9D18503854006CD2F9 /* WriteUp.m */,
+				27309F9918503854006CD2F9 /* Company.h */,
+				27309F9A18503854006CD2F9 /* Company.m */,
+				27309F9618503854006CD2F9 /* Truck.h */,
+				27309F9718503854006CD2F9 /* Truck.m */,
+				27309F93185032F1006CD2F9 /* Rechtien.xcdatamodeld */,
 				820DBF8B1843DC5500E2B343 /* COP4655_Team_Proj */,
 				820DBF841843DC5500E2B343 /* Frameworks */,
 				820DBF831843DC5500E2B343 /* Products */,
@@ -202,10 +205,11 @@
 			files = (
 				820DBF921843DC5500E2B343 /* main.m in Sources */,
 				820DBF961843DC5500E2B343 /* AppDelegate.m in Sources */,
-				27E6311F184FE958001F9760 /* Company.m in Sources */,
 				27E63125184FEBC3001F9760 /* CompanyViewController.m in Sources */,
-				27AE0CAF18500EB600610BCF /* Trucks.m in Sources */,
-				27AE0CB218500EDD00610BCF /* WriteUps.m in Sources */,
+				27309F95185032F1006CD2F9 /* Rechtien.xcdatamodeld in Sources */,
+				27309F9818503854006CD2F9 /* Truck.m in Sources */,
+				27309F9B18503854006CD2F9 /* Company.m in Sources */,
+				27309F9E18503854006CD2F9 /* WriteUp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +327,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		27309F93185032F1006CD2F9 /* Rechtien.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				27309F94185032F1006CD2F9 /* Rechtien.xcdatamodel */,
+			);
+			currentVersion = 27309F94185032F1006CD2F9 /* Rechtien.xcdatamodel */;
+			path = Rechtien.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 820DBF7A1843DC5500E2B343 /* Project object */;
 }

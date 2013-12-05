@@ -24,7 +24,7 @@
         theCompanies = [[Company alloc]init];
         
         // fill company with data from plist
-        [theCompanies myCompanies];
+        //[theCompanies myCompanies];
         
         UINavigationItem *n = [self navigationItem];
         
@@ -44,7 +44,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.theCompanies.myCompanies count];
+    //return [self.theCompanies.myCompanies count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -56,7 +56,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    cell.textLabel.text = [[self.theCompanies.myCompanies objectAtIndex:indexPath.row]valueForKey:@"name"];
+//    cell.textLabel.text = [[self.theCompanies.myCompanies objectAtIndex:indexPath.row]valueForKey:@"name"];
     
     return cell;
 

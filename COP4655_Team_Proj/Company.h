@@ -7,19 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface Company : NSObject
-{
-    NSMutableArray *myCompanies;
-    
-}
+@class Truck;
 
-@property (nonatomic, retain) NSMutableArray *myCompanies;
+@interface Company : NSManagedObject
 
--(void)newCompany:(NSDictionary *) newCompany;
+@property (nonatomic, retain) NSString * companyName;
+@property (nonatomic, retain) NSString * phoneNumber;
+@property (nonatomic, retain) NSString * address;
+@property (nonatomic, retain) NSString * contactPerson;
+@property (nonatomic, retain) NSSet *trucks;
+@end
 
--(void)deleteCompany:(NSDictionary *) theCompany;
+@interface Company (CoreDataGeneratedAccessors)
 
--(void)updateCompany:(NSDictionary *) theUpdate;
+- (void)addTrucksObject:(Truck *)value;
+- (void)removeTrucksObject:(Truck *)value;
+- (void)addTrucks:(NSSet *)values;
+- (void)removeTrucks:(NSSet *)values;
 
 @end

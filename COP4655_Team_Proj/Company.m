@@ -7,45 +7,15 @@
 //
 
 #import "Company.h"
+#import "Truck.h"
+
 
 @implementation Company
-@synthesize myCompanies;
 
--(id)init
-{
-    self = [super init];
-    if (self)
-    {
-        
-    }
-    
-    return self;
-}
+@dynamic companyName;
+@dynamic phoneNumber;
+@dynamic address;
+@dynamic contactPerson;
+@dynamic trucks;
 
--(NSMutableArray *) myCompanies
-{
-    if (!myCompanies)
-    {
-        myCompanies = [[NSMutableArray alloc]initWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"Data" ofType:@"plist"]];
-    }
-    return myCompanies;
-}
-
-// Creates a new company and adds it to the array of companies.
--(void)newCompany:(NSDictionary *) newCompany
-{
-    
-}
-
-// Deletes a company
--(void)deleteCompany:(NSDictionary *) theCompany
-{
-    
-}
-
-// Updates the comapny
--(void)updateCompany:(NSDictionary *) theUpdate
-{
-    
-}
 @end
