@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Al&apos;s Warehousing</string>
+		<key>address</key>
+		<string>17598 SW 144 St</string>
+		<key>phoneNumber</key>
+		<string>(111)222-333</string>
+		<key>trucks</key>
+		<dict>
+			<key>writeUps</key>
+			<dict/>
+		</dict>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Mayor Supplies</string>
+		<key>address</key>
+		<string></string>
+		<key>phoneNumber</key>
+		<string>(111)222-333</string>
+		<key>trucks</key>
+		<dict>
+			<key>writeUps</key>
+			<dict/>
+		</dict>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Sun Roofing</string>
+		<key>address</key>
+		<string></string>
+		<key>phoneNumber</key>
+		<string>(111)222-333</string>
+		<key>trucks</key>
+		<dict>
+			<key>writeUps</key>
+			<dict/>
+		</dict>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Load Depo</string>
+		<key>address</key>
+		<string></string>
+		<key>phoneNumber</key>
+		<string>(111)222-333</string>
+		<key>trucks</key>
+		<dict>
+			<key>writeUps</key>
+			<dict/>
+		</dict>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Sam Tools</string>
+		<key>address</key>
+		<string></string>
+		<key>phoneNumber</key>
+		<string>(111)222-333</string>
+		<key>trucks</key>
+		<dict>
+			<key>writeUps</key>
+			<dict/>
+		</dict>
+	</dict>
+</array>
+</plist>
