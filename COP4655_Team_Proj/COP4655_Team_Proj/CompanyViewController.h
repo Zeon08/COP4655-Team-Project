@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Company.h"
+#import "NewCompanyViewController.h"
 
 @interface CompanyViewController : UITableViewController
 {
-    Company *theCompanies;
     UISearchBar *searchBar;
 }
 
+-(IBAction)addNewItem:(id)sender;
+
 @property (nonatomic, retain) Company *theCompanies;
+
+
 @end

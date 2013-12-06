@@ -31,7 +31,7 @@
         
         NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:model];
         
-        NSString *path = [self itemArchivePath];
+        NSString *path = [self writeUpArchivePath];
         
         NSURL *storeURL = [NSURL fileURLWithPath:path];
         
@@ -52,12 +52,12 @@
         // The managed object context can manage undo, but we don't need it
         [context setUndoManager:nil];
         
-        [self loadAllItems];
+        [self loadAllWriteUps];
     }
     return self;    
 }
 
-- (void)loadAllItems
+- (void)loadAllWriteUps
 {
     if (!allWriteUps) {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];

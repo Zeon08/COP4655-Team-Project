@@ -8,6 +8,8 @@
 
 #import "CompanyViewController.h"
 #import "Company.h"
+#import "CompanyStore.h"
+#import "NewCompanyViewController.h"
 @interface CompanyViewController ()
 
 @end
@@ -20,13 +22,11 @@
     self = [super initWithStyle:style];
     if (self) {
         
-        // Init Object
-        theCompanies = [[Company alloc]init];
-        
-        // fill company with data from plist
-        //[theCompanies myCompanies];
-        
         UINavigationItem *n = [self navigationItem];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                target:self
+                                action:@selector(addNewItem:)];
         
         UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rech.png"]];
         n.titleView = img;
@@ -37,14 +37,39 @@
         
         self.tableView.tableHeaderView = searchBar;
         
-        
+        [[self navigationItem] setRightBarButtonItem:bbi];
     }
     return self;
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[self tableView] reloadData];
+}
 
+-(IBAction)addNewItem:(id)sender
+{
+    Company *newCompany = [[CompanyStore defaultStore]createCompany];
+    
+    NewCompanyViewController *newCompanyViewController = [[NewCompanyViewController alloc]init];
+    
+    [newCompanyViewController setCompany:newCompany];
+    
+    [newCompanyViewController setDismissBlock:^{
+        [[self tableView] reloadData];
+    }];
+    
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:newCompanyViewController];
+    
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    
+    [self presentViewController:navController animated:YES completion:nil];
+    
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return [self.theCompanies.myCompanies count];
+    return [[[CompanyStore defaultStore]allCompanies]count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -56,7 +81,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-//    cell.textLabel.text = [[self.theCompanies.myCompanies objectAtIndex:indexPath.row]valueForKey:@"name"];
+    Company *c = [[[CompanyStore defaultStore]allCompanies]objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text = [c companyName];
     
     return cell;
 

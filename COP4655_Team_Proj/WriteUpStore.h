@@ -24,18 +24,17 @@
 
 -(NSArray *)allWriteUps;
 
--(NSString *)itemArchivePath;
+-(NSString *)writeUpArchivePath;
 
 -(void)moveWriteUpAtIndex:(int)from
                 toIndex:(int)to;
 
 -(WriteUp *)createWriteUp;
 
--(NSString *)writeUpArchivePath;
 
 - (BOOL)saveChanges;
 
-- (void)loadAllItems;
+- (void)loadAllWriteUps;
 
 
 

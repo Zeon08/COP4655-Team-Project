@@ -11,6 +11,9 @@
 		27309F9818503854006CD2F9 /* Truck.m in Sources */ = {isa = PBXBuildFile; fileRef = 27309F9718503854006CD2F9 /* Truck.m */; };
 		27309F9B18503854006CD2F9 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 27309F9A18503854006CD2F9 /* Company.m */; };
 		27309F9E18503854006CD2F9 /* WriteUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27309F9D18503854006CD2F9 /* WriteUp.m */; };
+		2786BEDD1851534900438F3B /* CompanyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786BEDC1851534900438F3B /* CompanyStore.m */; };
+		2786BEE118515DDD00438F3B /* NewCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786BEDF18515DDD00438F3B /* NewCompanyViewController.m */; };
+		2786BEE218515DDD00438F3B /* NewCompanyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2786BEE018515DDD00438F3B /* NewCompanyViewController.xib */; };
 		27AE0CAC18500C9D00610BCF /* rech.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AE0CAB18500C9D00610BCF /* rech.png */; };
 		27E63121184FEB39001F9760 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E63120184FEB39001F9760 /* CoreData.framework */; };
 		27E63125184FEBC3001F9760 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E63123184FEBC3001F9760 /* CompanyViewController.m */; };
@@ -36,6 +39,11 @@
 		27309F9A18503854006CD2F9 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		27309F9C18503854006CD2F9 /* WriteUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteUp.h; sourceTree = "<group>"; };
 		27309F9D18503854006CD2F9 /* WriteUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteUp.m; sourceTree = "<group>"; };
+		2786BEDB1851534900438F3B /* CompanyStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyStore.h; sourceTree = "<group>"; };
+		2786BEDC1851534900438F3B /* CompanyStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyStore.m; sourceTree = "<group>"; };
+		2786BEDE18515DDD00438F3B /* NewCompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCompanyViewController.h; sourceTree = "<group>"; };
+		2786BEDF18515DDD00438F3B /* NewCompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCompanyViewController.m; sourceTree = "<group>"; };
+		2786BEE018515DDD00438F3B /* NewCompanyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCompanyViewController.xib; sourceTree = "<group>"; };
 		27AE0CAB18500C9D00610BCF /* rech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rech.png; sourceTree = "<group>"; };
 		27E63120184FEB39001F9760 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		27E63122184FEBC3001F9760 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
@@ -77,6 +85,8 @@
 		820DBF791843DC5500E2B343 = {
 			isa = PBXGroup;
 			children = (
+				2786BEDB1851534900438F3B /* CompanyStore.h */,
+				2786BEDC1851534900438F3B /* CompanyStore.m */,
 				82F744F41851128F006EAC11 /* WriteUpStore.h */,
 				82F744F51851128F006EAC11 /* WriteUpStore.m */,
 				27309F9C18503854006CD2F9 /* WriteUp.h */,
@@ -114,6 +124,9 @@
 		820DBF8B1843DC5500E2B343 /* COP4655_Team_Proj */ = {
 			isa = PBXGroup;
 			children = (
+				2786BEDE18515DDD00438F3B /* NewCompanyViewController.h */,
+				2786BEDF18515DDD00438F3B /* NewCompanyViewController.m */,
+				2786BEE018515DDD00438F3B /* NewCompanyViewController.xib */,
 				27E63122184FEBC3001F9760 /* CompanyViewController.h */,
 				27E63123184FEBC3001F9760 /* CompanyViewController.m */,
 				27E63124184FEBC3001F9760 /* CompanyViewController.xib */,
@@ -198,6 +211,7 @@
 				27E63126184FEBC3001F9760 /* CompanyViewController.xib in Resources */,
 				27E63128184FFDEC001F9760 /* Data.plist in Resources */,
 				27AE0CAC18500C9D00610BCF /* rech.png in Resources */,
+				2786BEE218515DDD00438F3B /* NewCompanyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +230,8 @@
 				27309F9B18503854006CD2F9 /* Company.m in Sources */,
 				27309F9E18503854006CD2F9 /* WriteUp.m in Sources */,
 				82F744F61851128F006EAC11 /* WriteUpStore.m in Sources */,
+				2786BEDD1851534900438F3B /* CompanyStore.m in Sources */,
+				2786BEE118515DDD00438F3B /* NewCompanyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
