@@ -31,6 +31,11 @@
 		820DBF9A1843DC5500E2B343 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF991843DC5500E2B343 /* Default@2x.png */; };
 		820DBF9C1843DC5500E2B343 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF9B1843DC5500E2B343 /* Default-568h@2x.png */; };
 		82F744F61851128F006EAC11 /* WriteUpStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F744F51851128F006EAC11 /* WriteUpStore.m */; };
+		B20AC0A41853CD6B00604BC4 /* NewTruckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0A21853CD6B00604BC4 /* NewTruckViewController.m */; };
+		B20AC0A51853CD6B00604BC4 /* NewTruckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20AC0A31853CD6B00604BC4 /* NewTruckViewController.xib */; };
+		B20AC0A81853D07D00604BC4 /* TruckStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0A71853D07D00604BC4 /* TruckStore.m */; };
+		B20AC0AC1853E58B00604BC4 /* NewWriteUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0AA1853E58B00604BC4 /* NewWriteUpViewController.m */; };
+		B20AC0AD1853E58B00604BC4 /* NewWriteUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20AC0AB1853E58B00604BC4 /* NewWriteUpViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +75,14 @@
 		820DBF9B1843DC5500E2B343 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		82F744F41851128F006EAC11 /* WriteUpStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteUpStore.h; sourceTree = "<group>"; };
 		82F744F51851128F006EAC11 /* WriteUpStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteUpStore.m; sourceTree = "<group>"; };
+		B20AC0A11853CD6B00604BC4 /* NewTruckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTruckViewController.h; sourceTree = "<group>"; };
+		B20AC0A21853CD6B00604BC4 /* NewTruckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTruckViewController.m; sourceTree = "<group>"; };
+		B20AC0A31853CD6B00604BC4 /* NewTruckViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTruckViewController.xib; sourceTree = "<group>"; };
+		B20AC0A61853D07D00604BC4 /* TruckStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckStore.h; sourceTree = "<group>"; };
+		B20AC0A71853D07D00604BC4 /* TruckStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckStore.m; sourceTree = "<group>"; };
+		B20AC0A91853E58B00604BC4 /* NewWriteUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWriteUpViewController.h; sourceTree = "<group>"; };
+		B20AC0AA1853E58B00604BC4 /* NewWriteUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWriteUpViewController.m; sourceTree = "<group>"; };
+		B20AC0AB1853E58B00604BC4 /* NewWriteUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewWriteUpViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +103,8 @@
 		820DBF791843DC5500E2B343 = {
 			isa = PBXGroup;
 			children = (
+				B20AC0A61853D07D00604BC4 /* TruckStore.h */,
+				B20AC0A71853D07D00604BC4 /* TruckStore.m */,
 				2786BEDB1851534900438F3B /* CompanyStore.h */,
 				2786BEDC1851534900438F3B /* CompanyStore.m */,
 				82F744F41851128F006EAC11 /* WriteUpStore.h */,
@@ -129,6 +144,12 @@
 		820DBF8B1843DC5500E2B343 /* COP4655_Team_Proj */ = {
 			isa = PBXGroup;
 			children = (
+				B20AC0A91853E58B00604BC4 /* NewWriteUpViewController.h */,
+				B20AC0AA1853E58B00604BC4 /* NewWriteUpViewController.m */,
+				B20AC0AB1853E58B00604BC4 /* NewWriteUpViewController.xib */,
+				B20AC0A11853CD6B00604BC4 /* NewTruckViewController.h */,
+				B20AC0A21853CD6B00604BC4 /* NewTruckViewController.m */,
+				B20AC0A31853CD6B00604BC4 /* NewTruckViewController.xib */,
 				2731C3E91853A0A40027847A /* TruckViewController.h */,
 				2731C3EA1853A0A40027847A /* TruckViewController.m */,
 				2731C3EB1853A0A50027847A /* TruckViewController.xib */,
@@ -221,6 +242,8 @@
 				27AE0CAC18500C9D00610BCF /* rech.png in Resources */,
 				2786BEE218515DDD00438F3B /* NewCompanyViewController.xib in Resources */,
 				2731C3ED1853A0A50027847A /* TruckViewController.xib in Resources */,
+				B20AC0A51853CD6B00604BC4 /* NewTruckViewController.xib in Resources */,
+				B20AC0AD1853E58B00604BC4 /* NewWriteUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +265,9 @@
 				2786BEDD1851534900438F3B /* CompanyStore.m in Sources */,
 				2786BEE118515DDD00438F3B /* NewCompanyViewController.m in Sources */,
 				2731C3EC1853A0A50027847A /* TruckViewController.m in Sources */,
+				B20AC0A41853CD6B00604BC4 /* NewTruckViewController.m in Sources */,
+				B20AC0A81853D07D00604BC4 /* TruckStore.m in Sources */,
+				B20AC0AC1853E58B00604BC4 /* NewWriteUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

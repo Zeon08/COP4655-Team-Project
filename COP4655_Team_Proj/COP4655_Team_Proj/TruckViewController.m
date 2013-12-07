@@ -10,6 +10,9 @@
 #import "Company.h"
 #import "CompanyStore.h"
 #import "CompanyViewController.h"
+#import "Truck.h"
+#import "TruckStore.h"
+#import "NewTruckViewController.h"
 
 @interface TruckViewController ()
 
@@ -42,12 +45,29 @@
 
 -(IBAction)addNewTruck:(id)sender
 {
+    Truck *newTruck = [[TruckStore defaultStore]createTruck];
     
+    NewTruckViewController *newTruckViewController = [[NewTruckViewController alloc]init];
+    
+    [newTruckViewController setTruck:newTruck];
+    
+    [newTruckViewController setDismissBlock:^{
+        [[self tableView] reloadData];
+    }];
+    
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:newTruckViewController];
+    
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    
+    [self presentViewController:navController animated:YES completion:nil];
+  
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[company trucks]count];
+    
+    return [[[TruckStore defaultStore]allTrucks]count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,10 +79,8 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    NSArray *trucks = [[company trucks]allObjects];
-    
-    cell.textLabel.text = [trucks objectAtIndex:[indexPath row]];
-    
+    Truck *t = [[[TruckStore defaultStore]allTrucks]objectAtIndex:[indexPath row]];
+    cell.textLabel.text=[t vin];
     return cell;
 }
 
@@ -82,6 +100,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)tableView:(UITableView *)aTableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+       
+    
+    
+}
+
+
+
+
 
 #pragma mark - Table view data source
 
