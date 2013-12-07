@@ -1,77 +1,53 @@
 //
-//  CompanyViewController.m
+//  TruckViewController.m
 //  COP4655_Team_Proj
 //
-//  Created by Javier Casaudoumecq on 12/4/13.
+//  Created by Javier Casaudoumecq on 12/7/13.
 //  Copyright (c) 2013 Javier Casaudoumecq. All rights reserved.
 //
 
-#import "CompanyViewController.h"
+#import "TruckViewController.h"
 #import "Company.h"
 #import "CompanyStore.h"
-#import "NewCompanyViewController.h"
-#import "TruckViewController.h"
+#import "CompanyViewController.h"
 
-@interface CompanyViewController ()
+@interface TruckViewController ()
 
 @end
 
-@implementation CompanyViewController
-
+@implementation TruckViewController
+@synthesize company;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        
-        UINavigationItem *n = [self navigationItem];
+        // Custom initialization
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                 target:self
-                                action:@selector(addNewItem:)];
-        
-        UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rech.png"]];
-        n.titleView = img;
-        
-        searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        
-        searchBar.delegate = (id)self;
-        
-        self.tableView.tableHeaderView = searchBar;
+                                action:@selector(addNewTruck:)];
         
         [[self navigationItem] setRightBarButtonItem:bbi];
     }
     return self;
 }
-- (void)viewWillAppear:(BOOL)animated
+
+-(void) setCompany:(Company *)c
 {
-    [super viewWillAppear:animated];
-    [[self tableView] reloadData];
+    company = c;
+    [[self navigationItem] setTitle:[company companyName]];
+    
 }
 
--(IBAction)addNewItem:(id)sender
+-(IBAction)addNewTruck:(id)sender
 {
-    Company *newCompany = [[CompanyStore defaultStore]createCompany];
-    
-    NewCompanyViewController *newCompanyViewController = [[NewCompanyViewController alloc]init];
-    
-    [newCompanyViewController setCompany:newCompany];
-    
-    [newCompanyViewController setDismissBlock:^{
-        [[self tableView] reloadData];
-    }];
-    
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:newCompanyViewController];
-    
-    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    
-    [self presentViewController:navController animated:YES completion:nil];
     
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[CompanyStore defaultStore]allCompanies]count];
+    return [[company trucks]count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,27 +59,13 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    Company *c = [[[CompanyStore defaultStore]allCompanies]objectAtIndex:[indexPath row]];
+    NSArray *trucks = [[company trucks]allObjects];
     
-    cell.textLabel.text = [c companyName];
+    cell.textLabel.text = [trucks objectAtIndex:[indexPath row]];
     
     return cell;
-
 }
 
-- (void)tableView:(UITableView *)aTableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TruckViewController *truckViewController = [[TruckViewController alloc]init];
-    NSArray *companies = [[CompanyStore defaultStore]allCompanies];
-    Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
-    
-    [truckViewController setCompany:selectedCompany];
-    
-    [[self navigationController]pushViewController:truckViewController animated:YES];
-    
-    
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -122,6 +84,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 #pragma mark - Table view data source
+
+
 
 
 

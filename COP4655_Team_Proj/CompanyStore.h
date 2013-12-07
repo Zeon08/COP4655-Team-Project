@@ -25,6 +25,8 @@
 
 -(NSString *) companyArchivePath;
 
+-(NSArray *)allTrucks;
+
 //-(void)moveCompanyAtIndex:(int)from toIndex:(int)to;
 
 -(Company *)createCompany;

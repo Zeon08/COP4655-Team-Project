@@ -17,7 +17,4 @@
 
 -(IBAction)addNewItem:(id)sender;
 
-@property (nonatomic, retain) Company *theCompanies;
-
-
 @end
