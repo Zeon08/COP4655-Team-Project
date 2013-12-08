@@ -12,12 +12,8 @@
 
 @implementation WriteUp
 
-@dynamic dtu;
-@dynamic licenseNumber;
 @dynamic complaintB;
 @dynamic complaintA;
-@dynamic state;
-@dynamic unitNumber;
 @dynamic complaintC;
 @dynamic image;
 @dynamic complaintD;

@@ -3,10 +3,12 @@
 //  COP4655_Team_Proj
 //
 //  Created by Javier Casaudoumecq on 12/5/13.
+// Code Added by Michael Thomas on 12/8/2013
 //  Copyright (c) 2013 Javier Casaudoumecq. All rights reserved.
 //
 
 #import "WriteUpStore.h"
+#import "WriteUp.h"
 
 @implementation WriteUpStore
 
@@ -80,5 +82,50 @@
         allWriteUps = [[NSMutableArray alloc] initWithArray:result];
     }
 }
+
+-(NSString *) writeUpArchivePath
+{
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+    
+    return [documentDirectory stringByAppendingPathComponent:@"store.data"];
+}
+
+- (BOOL)saveChanges
+{
+    NSError *err = nil;
+    BOOL successful = [context save:&err];
+    if (!successful) {
+        NSLog(@"Error saving: %@", [err localizedDescription]);
+    }
+    return successful;
+}
+
+-(void)removedWriteUp:(WriteUp *)w
+{
+    [context deleteObject:w];
+    [allWriteUps removeObjectIdenticalTo:w];
+}
+
+-(NSArray *) allWriteUps
+{
+    return allWriteUps;
+}
+
+-(WriteUp *)createWriteUp
+{
+    WriteUp *w = [NSEntityDescription insertNewObjectForEntityForName:@"Writeup" inManagedObjectContext:context];
+    
+    [allWriteUps addObject:w];
+    
+    return w;
+}
+
+
+
+
+
+
 
 @end

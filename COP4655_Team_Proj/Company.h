@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 Javier Casaudoumecq. All rights reserved.
 //
 
-//comment
-// second comment
-
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
