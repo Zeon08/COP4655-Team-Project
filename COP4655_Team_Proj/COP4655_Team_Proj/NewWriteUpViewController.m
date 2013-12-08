@@ -8,8 +8,8 @@
 //
 
 #import "NewWriteUpViewController.h"
-#import "WriteUpStore.h"
 #import "WriteUp.h"
+#import "CompanyStore.h"
 
 @interface NewWriteUpViewController ()
 
@@ -41,7 +41,7 @@
 {
     writeup = w;
     
-    [[self navigationItem] setTitle:[writeup promiseDate]];
+    //[[self navigationItem] setTitle:[writeup datePromised]];
 }
 
 - (IBAction)save:(id)sender
@@ -51,7 +51,7 @@
 
 - (IBAction)cancel:(id)sender
 {
-    [[WriteUpStore defaultStore]removeWriteUp:writeup];
+    [[CompanyStore defaultStore]removeWriteUp:writeup];
     
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:
      dismissBlock];
@@ -67,10 +67,10 @@
     [complaintC setText:[writeup complaintC]];
     [complaintD setText:[writeup complaintD]];
     [estimateField setText:[writeup estimate]];
-    [promiseDate setCalendar:[writeup datePromised]];
-    [imageField setImage:[writeup image]];
+//    [promiseDate setCalendar:[writeup datePromised]];
+    //[imageField setImage:[writeup image]];
     
-    [[self navigationItem] setTitle:[writeup promiseDate]];
+    //[[self navigationItem] setTitle:[writeup promiseDate]];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -90,8 +90,9 @@
     [writeup setComplaintC:[complaintC text]];
     [writeup setComplaintD:[complaintD text]];
     [writeup setEstimate:[estimateField text]];
-    [writeup setDatePromised:[promiseDate]];
-    [writeup setImage:[imageField]];
+    //[writeup setDatePromised:[promiseDate]];
+    //[writeup setImage:[imageField]];
+    
 }
 
 

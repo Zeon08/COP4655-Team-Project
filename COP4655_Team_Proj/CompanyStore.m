@@ -8,6 +8,8 @@
 
 #import "CompanyStore.h"
 #import "Company.h"
+#import "Truck.h"
+#import "WriteUp.h"
 
 @implementation CompanyStore
 
@@ -89,6 +91,47 @@
          
     }
 }
+-(void)loadallTrucks
+{
+    if (!allTrucks) {
+        NSFetchRequest *request = [[NSFetchRequest alloc]init];
+        
+        NSEntityDescription *e = [[model entitiesByName]objectForKey:@"Truck"];
+        [request setEntity:e];
+        
+        NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"vin" ascending:YES];
+        [request setSortDescriptors:[NSArray arrayWithObject:sd]];
+        
+        NSError *error;
+        NSArray *result = [context executeFetchRequest:request error:&error];
+        if(!result) {
+            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
+        }
+        allTrucks = [[NSMutableArray alloc]initWithArray:result];
+        
+        
+    }
+}
+
+-(void)loadallWriteUps
+{
+    if(!allWriteUps) {
+        NSFetchRequest *request = [[NSFetchRequest alloc]init];
+        
+        NSEntityDescription *e = [[model entitiesByName]objectForKey:@"WriteUp"];
+        [request setEntity:e];
+        
+        NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"datePromised" ascending:YES];
+        [request setSortDescriptors:[NSArray arrayWithObject:sd]];
+        
+        NSError *error;
+        NSArray *result = [context executeFetchRequest:request error:&error];
+        if(!result) {
+            [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
+        }
+        allWriteUps = [[NSMutableArray alloc]initWithArray:result];
+    }
+}
 
 -(NSString *) companyArchivePath
 {
@@ -114,10 +157,34 @@
     [context deleteObject:c];
     [allCompanies removeObjectIdenticalTo:c];
 }
+-(void)removeTruck:(Truck *)t
+{
+    [context deleteObject:t];
+    [allTrucks removeObjectIdenticalTo:t];
+}
+-(void) removeWriteUp:(WriteUp *)w
+{
+    [context deleteObject:w];
+    [allWriteUps removeObjectIdenticalTo:w];
+}
 
 -(NSArray *) allCompanies
 {
     return allCompanies;
+}
+
+-(NSArray *) allTrucks
+{
+    return allTrucks;
+}
+-(NSArray *) allWriteUps
+{
+    return allWriteUps;
+}
+
+-(NSManagedObjectContext *) theContext
+{
+    return context;
 }
 
 -(Company *)createCompany
@@ -127,5 +194,21 @@
     [allCompanies addObject:c];
     
     return c;
+}
+-(Truck *)createTruck
+{
+    Truck *t = [NSEntityDescription insertNewObjectForEntityForName:@"Truck" inManagedObjectContext:context];
+    
+    [allTrucks addObject:t];
+    
+    return t;
+}
+-(WriteUp *)createWriteUp
+{
+    WriteUp *w = [NSEntityDescription insertNewObjectForEntityForName:@"WriteUp" inManagedObjectContext:context];
+    
+    [allWriteUps addObject:w];
+    
+    return w;
 }
 @end

@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 @class Truck;
+@class Company;
 @interface NewTruckViewController : UIViewController <UINavigationControllerDelegate>
 @property (weak, nonatomic)IBOutlet UITextField * vinField;
 @property (weak, nonatomic)IBOutlet UITextField * modelField;
@@ -17,6 +18,7 @@
 @property (weak, nonatomic)IBOutlet UITextField * yearField;
 
 @property (nonatomic, strong) Truck *truck;
+@property (nonatomic, strong) Company *company;
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
 

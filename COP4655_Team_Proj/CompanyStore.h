@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-@class Company;
+@class Company, Truck, WriteUp;
 
 @interface CompanyStore : NSObject
 {
     NSMutableArray *allCompanies;
+    NSMutableArray *allTrucks;
+    NSMutableArray *allWriteUps;
     NSManagedObjectContext *context;
     NSManagedObjectModel *model;
 }
@@ -20,18 +22,27 @@
 +(CompanyStore *)defaultStore;
 
 -(void)removeCompany:(Company *)c;
+-(void)removeTruck:(Truck *)t;
+-(void)removeWriteUp:(WriteUp *)w;
 
 -(NSArray *)allCompanies;
+-(NSArray *)allTrucks;
+-(NSArray *)allWriteUps;
 
 -(NSString *) companyArchivePath;
 
--(NSArray *)allTrucks;
 
-//-(void)moveCompanyAtIndex:(int)from toIndex:(int)to;
+
+-(NSManagedObjectContext *) theContext;
+
 
 -(Company *)createCompany;
+-(Truck *)createTruck;
+-(WriteUp *)createWriteUp;
 
 -(BOOL)saveChanges;
 
 -(void)loadAllCompanies;
+-(void)loadallTrucks;
+-(void)loadallWriteUps;
 @end

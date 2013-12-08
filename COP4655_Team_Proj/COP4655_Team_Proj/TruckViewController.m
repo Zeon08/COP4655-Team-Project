@@ -11,7 +11,6 @@
 #import "CompanyStore.h"
 #import "CompanyViewController.h"
 #import "Truck.h"
-#import "TruckStore.h"
 #import "NewTruckViewController.h"
 
 @interface TruckViewController ()
@@ -20,6 +19,7 @@
 
 @implementation TruckViewController
 @synthesize company;
+@synthesize theContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,16 +43,25 @@
     
 }
 
+-(void)setTheContext:(NSManagedObjectContext *)ct
+{
+    theContext = ct;
+}
+
 -(IBAction)addNewTruck:(id)sender
 {
-    Truck *newTruck = [[TruckStore defaultStore]createTruck];
+    Truck *newTruck = [[CompanyStore defaultStore]createTruck];
     
     NewTruckViewController *newTruckViewController = [[NewTruckViewController alloc]init];
     
     [newTruckViewController setTruck:newTruck];
     
+    [newTruckViewController setCompany:company];
+   
+    
     [newTruckViewController setDismissBlock:^{
         [[self tableView] reloadData];
+        //[company addTrucksObject:newTruck];
     }];
     
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:newTruckViewController];
@@ -66,8 +75,9 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    return [[company trucks]count];
     
-    return [[[TruckStore defaultStore]allTrucks]count];
+    //return [[[TruckStore defaultStore]allTrucks]count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,8 +89,14 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    Truck *t = [[[TruckStore defaultStore]allTrucks]objectAtIndex:[indexPath row]];
-    cell.textLabel.text=[t vin];
+   
+    
+//    Truck *t = [[[TruckStore defaultStore]allTrucks]objectAtIndex:[indexPath row]];
+    
+    Truck *tt = [[[company trucks]allObjects]objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text=[tt vin];
+    
     return cell;
 }
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Company.h"
 #import "NewCompanyViewController.h"
+#import "TruckViewController.h"
 
 @interface CompanyViewController : UITableViewController
 {

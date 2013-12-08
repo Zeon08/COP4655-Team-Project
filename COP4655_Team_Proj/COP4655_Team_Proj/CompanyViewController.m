@@ -53,6 +53,8 @@
 {
     Company *newCompany = [[CompanyStore defaultStore]createCompany];
     
+    
+    
     NewCompanyViewController *newCompanyViewController = [[NewCompanyViewController alloc]init];
     
     [newCompanyViewController setCompany:newCompany];
@@ -98,7 +100,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     NSArray *companies = [[CompanyStore defaultStore]allCompanies];
     Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
     
+    NSManagedObjectContext *companyContext = [[CompanyStore defaultStore]theContext];
+    
+    
     [truckViewController setCompany:selectedCompany];
+    [truckViewController setTheContext:companyContext];
     
     [[self navigationController]pushViewController:truckViewController animated:YES];
     

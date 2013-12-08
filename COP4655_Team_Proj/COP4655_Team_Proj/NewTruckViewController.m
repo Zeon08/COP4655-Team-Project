@@ -7,8 +7,9 @@
 //
 
 #import "NewTruckViewController.h"
-#import "TruckStore.h"
 #import "Truck.h"
+#import "Company.h"
+#import "CompanyStore.h"
 
 @interface NewTruckViewController ()
 
@@ -16,6 +17,7 @@
 
 @implementation NewTruckViewController
 @synthesize truck,dismissBlock,vinField,makeField,modelField, yearField;
+@synthesize company;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,13 +34,17 @@
 }
 
 
--(void) setTruck:(Truck *)t
+-(void) setTruck:(Truck *)t 
 {
     truck = t;
     
     [[self navigationItem] setTitle:[truck vin]];
 }
 
+-(void) setCompany:(Company *)c
+{
+    company = c;
+}
 - (IBAction)save:(id)sender
 {
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:dismissBlock];
@@ -46,7 +52,7 @@
 
 - (IBAction)cancel:(id)sender
 {
-    [[TruckStore defaultStore]removeTruck:truck];
+    [[CompanyStore defaultStore]removeTruck:truck];
     
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:dismissBlock];
 }
@@ -82,7 +88,9 @@
     [truck setModel:[modelField text]];
     [truck setMake:[makeField text]];
     [truck setYear:[yearField text]];
+    NSSet *myTrucks = [[NSSet alloc]initWithObjects:truck, nil];
     
+    [company addTrucks:myTrucks];
 }
 
 
