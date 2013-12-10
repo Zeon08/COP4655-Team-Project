@@ -12,8 +12,11 @@
 #import "TruckViewController.h"
 
 @interface CompanyViewController : UITableViewController
+<UISearchBarDelegate>
 {
     UISearchBar *searchBar;
+    UISearchDisplayController *searchDisplayController;
+    NSMutableArray *searchResults;
 }
 
 -(IBAction)addNewItem:(id)sender;

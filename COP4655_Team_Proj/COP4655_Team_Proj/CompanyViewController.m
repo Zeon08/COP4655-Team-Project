@@ -33,9 +33,14 @@
         UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rech.png"]];
         n.titleView = img;
         
+        searchResults = [[NSMutableArray alloc] init];
         searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         
-        searchBar.delegate = (id)self;
+        
+        searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+        
+        searchDisplayController.delegate = (id)self;
+        searchDisplayController.searchResultsDataSource = self;
         
         self.tableView.tableHeaderView = searchBar;
         
@@ -43,11 +48,46 @@
     }
     return self;
 }
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [[self tableView] reloadData];
 }
+
+
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [searchResults removeAllObjects];
+    
+    Company *element;
+    NSArray *companies = [[CompanyStore defaultStore]allCompanies];
+    /* in this loop I search through every element (group) (see the code on top) in
+     the "originalData" array, if the string match, the element will be added in a
+     new array called newGroup. Then, if newGroup has 1 or more elements, it will be
+     added in the "searchData" array. shortly, I recreated the structure of the
+     original array "originalData". */
+    
+    for(element in companies) //take the n group (eg. group1, group2, group3)
+        //in the original data
+    {
+        
+        NSMutableArray *newGroup = [[NSMutableArray alloc] init];
+        Company *element;
+        
+        if ([[element companyName] isEqualToString:searchString]) {
+            [newGroup addObject:element]; }
+        
+        if ([newGroup count] > 0) {
+            [searchResults addObject:newGroup];
+        }
+        
+    }
+    
+    return YES;}
 
 -(IBAction)addNewItem:(id)sender
 {
@@ -73,7 +113,12 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+        
+    } else {
     return [[[CompanyStore defaultStore]allCompanies]count];
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,8 +132,11 @@
     
     Company *c = [[[CompanyStore defaultStore]allCompanies]objectAtIndex:[indexPath row]];
     
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        cell.textLabel.text = [searchResults objectAtIndex:indexPath.row];
+    } else {
     cell.textLabel.text = [c companyName];
-    
+    }
     return cell;
 
 }
