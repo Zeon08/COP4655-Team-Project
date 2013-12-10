@@ -67,8 +67,12 @@
     [complaintC setText:[writeup complaintC]];
     [complaintD setText:[writeup complaintD]];
     [estimateField setText:[writeup estimate]];
-//    [promiseDate setCalendar:[writeup datePromised]];
-    //[imageField setImage:[writeup image]];
+    //Convert the NSTimeInterval stored in core data into a date format for the date time picker
+    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[writeup datePromised]];
+    [promiseDate setDate:date];
+    //Convert the data from core data into an image to load.
+    UIImage *image = [UIImage imageWithData:[writeup image]];
+    [imageField setImage:image];
     
     //[[self navigationItem] setTitle:[writeup promiseDate]];
 }
@@ -90,6 +94,9 @@
     [writeup setComplaintC:[complaintC text]];
     [writeup setComplaintD:[complaintD text]];
     [writeup setEstimate:[estimateField text]];
+    [writeup setDatePromised:promiseDate.countDownDuration];
+    NSData *imageData = UIImagePNGRepresentation(imageField);
+    [writeup setImage:imageData];
     //[writeup setDatePromised:[promiseDate]];
     //[writeup setImage:[imageField]];
     
