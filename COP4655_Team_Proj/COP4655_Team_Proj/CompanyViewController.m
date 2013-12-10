@@ -65,29 +65,74 @@ shouldReloadTableForSearchString:(NSString *)searchString
     
     Company *element;
     NSArray *companies = [[CompanyStore defaultStore]allCompanies];
-    /* in this loop I search through every element (group) (see the code on top) in
-     the "originalData" array, if the string match, the element will be added in a
-     new array called newGroup. Then, if newGroup has 1 or more elements, it will be
-     added in the "searchData" array. shortly, I recreated the structure of the
-     original array "originalData". */
+    NSMutableArray *elementText = [[NSMutableArray alloc]init];
     
-    for(element in companies) //take the n group (eg. group1, group2, group3)
-        //in the original data
+    for(element in companies)
     {
         
+        [elementText addObject:[element companyName]];
+        
         NSMutableArray *newGroup = [[NSMutableArray alloc] init];
-        Company *element;
+        NSString *text;
         
-        if ([[element companyName] isEqualToString:searchString]) {
-            [newGroup addObject:element]; }
-        
+        NSLog(@"%@",elementText);
+        for (text in elementText)
+        {
+            if ([text isEqualToString:searchString]) {
+                NSLog(@"%@",text);
+                NSLog(@"Adding");
+                //[newGroup addObject:element];
+                
+            }
+            //            NSRange range = [text rangeOfString:searchString options:NSCaseInsensitiveSearch];
+            //            if (range.length > 0) { //if the substring match
+            //                [newGroup addObject:element]; //add the element to group
+            //            }
+            
+            
+            
+        }
         if ([newGroup count] > 0) {
             [searchResults addObject:newGroup];
         }
-        
+
+
     }
     
-    return YES;}
+    
+    
+
+
+    
+
+
+
+//    for(element in companies) //take the n group (eg. group1, group2, group3)
+//        //in the original data
+//    {
+//        
+//        NSMutableArray *newGroup = [[NSMutableArray alloc] init];
+//        //Company *element;
+//        
+////        NSRange range = [[element companyName] rangeOfString:searchString
+////                                       options:NSCaseInsensitiveSearch];
+//        
+////        if (range.length > 0) { //if the substring match
+////            [newGroup addObject:element]; //add the element to group
+////        }
+//        if ([[element companyName] isEqualToString:searchString]) {
+//            [newGroup addObject:element]; }
+//        
+//        if ([newGroup count] > 0) {
+//            [searchResults addObject:newGroup];
+//        }
+//        
+//    }
+    
+    
+    
+    return YES;
+}
 
 -(IBAction)addNewItem:(id)sender
 {
@@ -133,7 +178,9 @@ shouldReloadTableForSearchString:(NSString *)searchString
     Company *c = [[[CompanyStore defaultStore]allCompanies]objectAtIndex:[indexPath row]];
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        cell.textLabel.text = [searchResults objectAtIndex:indexPath.row];
+        Company *sc = [searchResults objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = [sc companyName];
     } else {
     cell.textLabel.text = [c companyName];
     }
