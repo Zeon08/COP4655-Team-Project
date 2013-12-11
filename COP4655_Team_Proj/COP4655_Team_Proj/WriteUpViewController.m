@@ -10,6 +10,7 @@
 
 #import "WriteUpViewController.h"
 #import "WriteUp.h"
+#import "Company.h"
 #import "CompanyStore.h"
 #import "NewWriteUpViewController.h"
 #import "CompanyViewController.h"
@@ -21,7 +22,7 @@
 
 @implementation WriteUpViewController
 
-@synthesize truck;
+@synthesize truck, company;
 
 
 
@@ -51,10 +52,11 @@
 {
 
     truck=t;
-   [ [self navigationItem]setTitle:[truck vin]];
-
-    truck =t;
-
+    [[self navigationItem] setTitle:[truck vin]];
+}
+-(void)setCompany:(Company *)c
+{
+    company = c;
 }
 
 -(IBAction)addNewItem:(id)sender
@@ -64,6 +66,8 @@
     NewWriteUpViewController *newWriteUpViewController = [[NewWriteUpViewController alloc]init];
     
     [newWriteUpViewController setWriteup:newWriteUp];
+    [newWriteUpViewController setTruck:truck];
+    [newWriteUpViewController setCompany:company];
     
     [newWriteUpViewController setDismissBlock:^{
         [[self tableView] reloadData];
@@ -109,6 +113,7 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WriteUpDetailViewController *writeupdetailviewcontroller = [[WriteUpDetailViewController alloc]init];
+    
     ///TruckViewController *truckViewController = [[TruckViewController alloc]init];
     //NSArray *companies = [[CompanyStore defaultStore]allCompanies];
     //Company *selectedCompany = [companies objectAtIndex:[indexPath row]];

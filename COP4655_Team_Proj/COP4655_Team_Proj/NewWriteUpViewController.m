@@ -10,15 +10,19 @@
 #import "NewWriteUpViewController.h"
 #import "WriteUp.h"
 #import "CompanyStore.h"
+#import "Company.h"
+#import "Truck.h"
 
 @interface NewWriteUpViewController ()
 
 @end
 
 @implementation NewWriteUpViewController
-@synthesize writeup;
+@synthesize writeup,company,truck;
 @synthesize dismissBlock;
-@synthesize complaintA, complaintB, complaintC, complaintD, promiseDate, estimateField, imageField;
+@synthesize complaintA, complaintB, complaintC, complaintD, estimateField, imageField;
+@synthesize vinField,milesField,makeField,modelField,yearField,nameField,addressField,phoneField;
+@synthesize scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +37,10 @@
         UIBarButtonItem *cancel = [[UIBarButtonItem alloc]
             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
         [[self navigationItem]setLeftBarButtonItem:cancel];
+        
+      
+        
+
     }
     return self;
 }
@@ -42,6 +50,15 @@
     writeup = w;
     
     //[[self navigationItem] setTitle:[writeup datePromised]];
+}
+-(void)setCompany:(Company *)c
+{
+    company =c;
+
+}
+-(void)setTruck:(Truck *)t
+{
+    truck = t;
 }
 
 - (IBAction)save:(id)sender
@@ -62,17 +79,28 @@
 {
     [super viewWillAppear:animated];
     
+    [[self vinField]setText:[truck vin]];
+    [[self makeField]setText:[truck make]];
+    [[self modelField]setText:[truck model]];
+    [[self yearField]setText:[truck model]];
+    [[self nameField]setText:[company companyName]];
+    [[self addressField]setText:[company address]];
+    [[self phoneField]setText:[company phoneNumber]];
+    
+    
     [complaintA setText:[writeup complaintA]];
     [complaintB setText:[writeup complaintB]];
     [complaintC setText:[writeup complaintC]];
     [complaintD setText:[writeup complaintD]];
     [estimateField setText:[writeup estimate]];
+    
     //Convert the NSTimeInterval stored in core data into a date format for the date time picker
-    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[writeup datePromised]];
-    [promiseDate setDate:date];
+//    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[writeup datePromised]];
+    //[promiseDate setDate:date];
     //Convert the data from core data into an image to load.
     UIImage *image = [UIImage imageWithData:[writeup image]];
-    [imageField setImage:image];
+    
+    
     
     //[[self navigationItem] setTitle:[writeup promiseDate]];
 }
@@ -94,9 +122,9 @@
     [writeup setComplaintC:[complaintC text]];
     [writeup setComplaintD:[complaintD text]];
     [writeup setEstimate:[estimateField text]];
-    [writeup setDatePromised:promiseDate.countDownDuration];
-    NSData *imageData = UIImagePNGRepresentation(imageField);
-    [writeup setImage:imageData];
+//    [writeup setDatePromised:promiseDate.countDownDuration];
+    //NSData *imageData = UIImagePNGRepresentation(imageField);
+    //[writeup setImage:imageData];
     //[writeup setDatePromised:[promiseDate]];
     //[writeup setImage:[imageField]];
     
@@ -107,6 +135,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [scrollView setScrollEnabled:YES];
+    
+    [scrollView setContentSize:CGSizeMake(320, 900)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,7 +191,7 @@
     imageToSave = (UIImage *) [info objectForKey:
                                UIImagePickerControllerOriginalImage];
     
-    //theImage = imageToSave;
+    theImage = imageToSave;
     
     // Save the new image to the Camera Roll
     UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
