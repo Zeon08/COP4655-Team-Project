@@ -34,6 +34,8 @@
 		B20AC0A51853CD6B00604BC4 /* NewTruckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20AC0A31853CD6B00604BC4 /* NewTruckViewController.xib */; };
 		B20AC0AC1853E58B00604BC4 /* NewWriteUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0AA1853E58B00604BC4 /* NewWriteUpViewController.m */; };
 		B20AC0AD1853E58B00604BC4 /* NewWriteUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20AC0AB1853E58B00604BC4 /* NewWriteUpViewController.xib */; };
+		B2B068571857EB7500F39CD3 /* WriteUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B068551857EB7500F39CD3 /* WriteUpViewController.m */; };
+		B2B068581857EB7500F39CD3 /* WriteUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B068561857EB7500F39CD3 /* WriteUpViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,9 @@
 		B20AC0A91853E58B00604BC4 /* NewWriteUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWriteUpViewController.h; sourceTree = "<group>"; };
 		B20AC0AA1853E58B00604BC4 /* NewWriteUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWriteUpViewController.m; sourceTree = "<group>"; };
 		B20AC0AB1853E58B00604BC4 /* NewWriteUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewWriteUpViewController.xib; sourceTree = "<group>"; };
+		B2B068541857EB7500F39CD3 /* WriteUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteUpViewController.h; sourceTree = "<group>"; };
+		B2B068551857EB7500F39CD3 /* WriteUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteUpViewController.m; sourceTree = "<group>"; };
+		B2B068561857EB7500F39CD3 /* WriteUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteUpViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +139,9 @@
 		820DBF8B1843DC5500E2B343 /* COP4655_Team_Proj */ = {
 			isa = PBXGroup;
 			children = (
+				B2B068541857EB7500F39CD3 /* WriteUpViewController.h */,
+				B2B068551857EB7500F39CD3 /* WriteUpViewController.m */,
+				B2B068561857EB7500F39CD3 /* WriteUpViewController.xib */,
 				B20AC0A91853E58B00604BC4 /* NewWriteUpViewController.h */,
 				B20AC0AA1853E58B00604BC4 /* NewWriteUpViewController.m */,
 				B20AC0AB1853E58B00604BC4 /* NewWriteUpViewController.xib */,
@@ -234,6 +242,7 @@
 				2731C3ED1853A0A50027847A /* TruckViewController.xib in Resources */,
 				B20AC0A51853CD6B00604BC4 /* NewTruckViewController.xib in Resources */,
 				B20AC0AD1853E58B00604BC4 /* NewWriteUpViewController.xib in Resources */,
+				B2B068581857EB7500F39CD3 /* WriteUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +265,7 @@
 				2731C3EC1853A0A50027847A /* TruckViewController.m in Sources */,
 				B20AC0A41853CD6B00604BC4 /* NewTruckViewController.m in Sources */,
 				B20AC0AC1853E58B00604BC4 /* NewWriteUpViewController.m in Sources */,
+				B2B068571857EB7500F39CD3 /* WriteUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

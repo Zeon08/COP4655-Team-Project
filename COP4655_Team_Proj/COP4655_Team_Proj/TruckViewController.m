@@ -12,6 +12,7 @@
 #import "CompanyViewController.h"
 #import "Truck.h"
 #import "NewTruckViewController.h"
+#import "WriteUpViewController.h"
 
 @interface TruckViewController ()
 
@@ -121,7 +122,20 @@
 - (void)tableView:(UITableView *)aTableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-       
+    
+   WriteUpViewController *writeupViewController = [[WriteUpViewController alloc]init];
+    //NSArray *companies = [[CompanyStore defaultStore]allCompanies];
+    //Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
+    
+    //NSManagedObjectContext *companyContext = [[CompanyStore defaultStore]theContext];
+    
+    
+    //[truckViewController setCompany:selectedCompany];
+   // [truckViewController setTheContext:companyContext];
+    
+    [[self navigationController]pushViewController:writeupViewController animated:YES];
+    
+ 
     
     
 }
