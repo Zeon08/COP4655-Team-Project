@@ -10,10 +10,6 @@
 #import "Truck.h"
 @interface WriteUpViewController : UITableViewController
 
-
-
-
-@property (nonatomic, strong) NSManagedObjectContext *theContext;
 @property (nonatomic, strong) Truck *truck;
 -(IBAction)addNewItem:(id)sender;
 

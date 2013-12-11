@@ -30,6 +30,7 @@
 		820DBF981843DC5500E2B343 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF971843DC5500E2B343 /* Default.png */; };
 		820DBF9A1843DC5500E2B343 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF991843DC5500E2B343 /* Default@2x.png */; };
 		820DBF9C1843DC5500E2B343 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 820DBF9B1843DC5500E2B343 /* Default-568h@2x.png */; };
+		8268FACF1857F89D000B5580 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8268FACE1857F89D000B5580 /* MobileCoreServices.framework */; };
 		B20AC0A41853CD6B00604BC4 /* NewTruckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0A21853CD6B00604BC4 /* NewTruckViewController.m */; };
 		B20AC0A51853CD6B00604BC4 /* NewTruckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20AC0A31853CD6B00604BC4 /* NewTruckViewController.xib */; };
 		B20AC0AC1853E58B00604BC4 /* NewWriteUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0AA1853E58B00604BC4 /* NewWriteUpViewController.m */; };
@@ -73,6 +74,7 @@
 		820DBF971843DC5500E2B343 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		820DBF991843DC5500E2B343 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		820DBF9B1843DC5500E2B343 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8268FACE1857F89D000B5580 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B20AC0A11853CD6B00604BC4 /* NewTruckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTruckViewController.h; sourceTree = "<group>"; };
 		B20AC0A21853CD6B00604BC4 /* NewTruckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTruckViewController.m; sourceTree = "<group>"; };
 		B20AC0A31853CD6B00604BC4 /* NewTruckViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTruckViewController.xib; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8268FACF1857F89D000B5580 /* MobileCoreServices.framework in Frameworks */,
 				27E63121184FEB39001F9760 /* CoreData.framework in Frameworks */,
 				820DBF861843DC5500E2B343 /* UIKit.framework in Frameworks */,
 				820DBF881843DC5500E2B343 /* Foundation.framework in Frameworks */,
@@ -102,6 +105,7 @@
 		820DBF791843DC5500E2B343 = {
 			isa = PBXGroup;
 			children = (
+				8268FACE1857F89D000B5580 /* MobileCoreServices.framework */,
 				2786BEDB1851534900438F3B /* CompanyStore.h */,
 				2786BEDC1851534900438F3B /* CompanyStore.m */,
 				27309F9C18503854006CD2F9 /* WriteUp.h */,

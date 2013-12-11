@@ -9,19 +9,23 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 #import "WriteUp.h"
 
 
 @class WriteUp;
 
-@interface NewWriteUpViewController : UIViewController <UINavigationControllerDelegate>
-
+@interface NewWriteUpViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+{
+    UIImage *theImage;
+}
 @property (weak, nonatomic) IBOutlet UITextField *complaintA;
 @property (weak, nonatomic) IBOutlet UITextField *complaintB;
 @property (weak, nonatomic) IBOutlet UITextField *complaintC;
 @property (weak, nonatomic) IBOutlet UITextField *complaintD;
 @property (weak, nonatomic) IBOutlet UIDatePicker *promiseDate;
 @property (weak, nonatomic) IBOutlet UIImageView *imageField;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *estimateField;
 @property (nonatomic, strong) WriteUp *writeup;

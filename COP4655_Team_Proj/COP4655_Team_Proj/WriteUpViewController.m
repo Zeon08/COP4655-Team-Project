@@ -21,7 +21,7 @@
 @implementation WriteUpViewController
 
 @synthesize truck;
-@synthesize theContext;
+
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -44,6 +44,11 @@
 {
     [super viewWillAppear:animated];
     [[self tableView] reloadData];
+}
+
+-(void)setTruck:(Truck *)t
+{
+    truck =t;
 }
 
 -(IBAction)addNewItem:(id)sender
