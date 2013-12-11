@@ -22,7 +22,7 @@
 @implementation WriteUpViewController
 
 @synthesize truck;
-@synthesize theContext;
+
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -49,8 +49,12 @@
 
 -(void)setTruck:(Truck *)t
 {
+
     truck=t;
    [ [self navigationItem]setTitle:[truck vin]];
+
+    truck =t;
+
 }
 
 -(IBAction)addNewItem:(id)sender

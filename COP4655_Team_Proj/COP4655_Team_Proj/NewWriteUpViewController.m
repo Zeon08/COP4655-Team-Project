@@ -116,5 +116,68 @@
 }
 
 - (IBAction)takePhoto:(id)sender {
+    [self startCameraControllerFromViewController: self
+                                    usingDelegate: (id)self];
 }
+
+- (BOOL) startCameraControllerFromViewController: (UIViewController*) controller usingDelegate: (id <UIImagePickerControllerDelegate,UINavigationControllerDelegate>) delegate {
+    
+    
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeCamera] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+        return NO;
+    
+    // Create the picker object
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+    
+    // Specify the types of camera features available
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    
+    // Displays a control that allows the user to take pictures only.
+    cameraUI.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+    
+    
+    // Hides the controls for moving & scaling pictures, or for
+    // trimming movies. To instead show the controls, use YES.
+    cameraUI.allowsEditing = NO;
+    
+    // Specify which object contains the picker's methods
+    cameraUI.delegate = delegate;
+    
+    // Picker object view is attached to view hierarchy and displayed.
+    [controller presentViewController: cameraUI animated: YES completion: nil ];
+    return YES;
+    
+}
+- (void) imagePickerController: (UIImagePickerController *) picker
+ didFinishPickingMediaWithInfo: (NSDictionary *) info {
+    
+    // Create an image and store the acquired picture
+    UIImage  *imageToSave;
+    imageToSave = (UIImage *) [info objectForKey:
+                               UIImagePickerControllerOriginalImage];
+    
+    //theImage = imageToSave;
+    
+    // Save the new image to the Camera Roll
+    UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
+    
+    NSLog(@"you took a picture");
+    // View the image on screen
+    [self.imageField setImage:imageToSave];
+   
+    
+    // Tell controller to remove the picker from the view hierarchy and release object.
+    [self dismissViewControllerAnimated: YES completion: ^{[self doSomethingElse];} ];
+    
+}
+
+- (void) doSomethingElse {
+    NSLog(@"Camera Dismissed");
+    
+}
+
 @end
