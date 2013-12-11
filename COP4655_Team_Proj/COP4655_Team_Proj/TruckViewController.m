@@ -124,14 +124,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
    WriteUpViewController *writeupViewController = [[WriteUpViewController alloc]init];
-    //NSArray *companies = [[CompanyStore defaultStore]allCompanies];
-    //Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
+    NSArray *trucks = [[CompanyStore defaultStore]allTrucks];
+    Truck *selectedTruck = [trucks objectAtIndex:[indexPath row]];
+       
     
-    //NSManagedObjectContext *companyContext = [[CompanyStore defaultStore]theContext];
-    
-    
-    //[truckViewController setCompany:selectedCompany];
-   // [truckViewController setTheContext:companyContext];
+    [writeupViewController setTruck:selectedTruck];
+
     
     [[self navigationController]pushViewController:writeupViewController animated:YES];
     

@@ -10,6 +10,7 @@
 #import "Company.h"
 #import "CompanyStore.h"
 #import "CompanyViewController.h"
+#import "Truck.h"
 
 @interface TruckViewController : UITableViewController
 {

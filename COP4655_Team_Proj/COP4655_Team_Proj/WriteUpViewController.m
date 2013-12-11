@@ -13,6 +13,7 @@
 #import "CompanyStore.h"
 #import "NewWriteUpViewController.h"
 #import "CompanyViewController.h"
+#import "WriteUpDetailViewController.h"
 
 @interface WriteUpViewController ()
 
@@ -44,6 +45,12 @@
 {
     [super viewWillAppear:animated];
     [[self tableView] reloadData];
+}
+
+-(void)setTruck:(Truck *)t
+{
+    truck=t;
+   [ [self navigationItem]setTitle:[truck vin]];
 }
 
 -(IBAction)addNewItem:(id)sender
@@ -97,7 +104,8 @@
 - (void)tableView:(UITableView *)aTableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TruckViewController *truckViewController = [[TruckViewController alloc]init];
+    WriteUpDetailViewController *writeupdetailviewcontroller = [[WriteUpDetailViewController alloc]init];
+    ///TruckViewController *truckViewController = [[TruckViewController alloc]init];
     //NSArray *companies = [[CompanyStore defaultStore]allCompanies];
     //Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
     
@@ -107,7 +115,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     //[truckViewController setCompany:selectedCompany];
     //[truckViewController setTheContext:companyContext];
     
-    //[[self navigationController]pushViewController:truckViewController animated:YES];
+    [[self navigationController]pushViewController:writeupdetailviewcontroller animated:YES];
     
     
 }
