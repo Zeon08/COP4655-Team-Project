@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Truck.h"
+#import "Company.h"
 @interface WriteUpViewController : UITableViewController
 
 @property (nonatomic, strong) Truck *truck;
+@property (nonatomic, strong) Company *company;
 -(IBAction)addNewItem:(id)sender;
 
 @end

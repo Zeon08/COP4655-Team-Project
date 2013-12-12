@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WriteUp.h"
 
+
 @interface WriteUpDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *complaintAField;
 @property (weak, nonatomic) IBOutlet UILabel *complaintBField;
@@ -18,5 +19,9 @@
 @property (nonatomic, strong) WriteUp *writeup;
 
 -(void) setWriteUp:(WriteUp *)w;
+
+
+//@interface WriteUpDetailViewController : UIViewController
+//@property (nonatomic, strong) WriteUp *writeUp;
 
 @end

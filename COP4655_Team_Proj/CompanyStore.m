@@ -65,6 +65,8 @@
         [context setUndoManager:nil];
         
         [self loadAllCompanies];
+        [self loadallTrucks];
+        [self loadallWriteUps];
 
     }
     return self;
@@ -159,13 +161,17 @@
 }
 -(void)removeTruck:(Truck *)t
 {
+     NSLog(@"Going to delete");
+    NSLog(@"%@",allTrucks);
     [context deleteObject:t];
     [allTrucks removeObjectIdenticalTo:t];
 }
 -(void) removeWriteUp:(WriteUp *)w
 {
+    NSLog(@"Going to delete");
     [context deleteObject:w];
     [allWriteUps removeObjectIdenticalTo:w];
+
 }
 
 -(NSArray *) allCompanies
@@ -200,6 +206,8 @@
     Truck *t = [NSEntityDescription insertNewObjectForEntityForName:@"Truck" inManagedObjectContext:context];
     
     [allTrucks addObject:t];
+    NSLog(@"Added truck");
+    NSLog(@"%@",allTrucks);
     
     return t;
 }
@@ -208,7 +216,8 @@
     WriteUp *w = [NSEntityDescription insertNewObjectForEntityForName:@"WriteUp" inManagedObjectContext:context];
     
     [allWriteUps addObject:w];
-    
+    NSLog(@"Added WriteUp");
+    NSLog(@"%@",allWriteUps);
     return w;
 }
 @end

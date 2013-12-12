@@ -10,15 +10,19 @@
 #import "NewWriteUpViewController.h"
 #import "WriteUp.h"
 #import "CompanyStore.h"
+#import "Company.h"
+#import "Truck.h"
 
 @interface NewWriteUpViewController ()
 
 @end
 
 @implementation NewWriteUpViewController
-@synthesize writeup;
-@synthesize dismissBlock;
-@synthesize complaintA, complaintB, complaintC, complaintD, promiseDate, estimateField, imageField;
+@synthesize writeup,company,truck;
+@synthesize dismissBlock, picker;
+@synthesize complaintA, complaintB, complaintC, complaintD, estimateField, imageField;
+@synthesize vinField,milesField,makeField,modelField,yearField,nameField,addressField,phoneField;
+@synthesize scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +37,10 @@
         UIBarButtonItem *cancel = [[UIBarButtonItem alloc]
             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
         [[self navigationItem]setLeftBarButtonItem:cancel];
+        
+      
+        
+
     }
     return self;
 }
@@ -41,7 +49,15 @@
 {
     writeup = w;
     
-    //[[self navigationItem] setTitle:[writeup datePromised]];
+}
+-(void)setCompany:(Company *)c
+{
+    company =c;
+
+}
+-(void)setTruck:(Truck *)t
+{
+    truck = t;
 }
 
 - (IBAction)save:(id)sender
@@ -62,25 +78,21 @@
 {
     [super viewWillAppear:animated];
     
+    [[self vinField]setText:[truck vin]];
+    [[self makeField]setText:[truck make]];
+    [[self modelField]setText:[truck model]];
+    [[self yearField]setText:[truck model]];
+    [[self nameField]setText:[company companyName]];
+    [[self addressField]setText:[company address]];
+    [[self phoneField]setText:[company phoneNumber]];
+    
+    
     [complaintA setText:[writeup complaintA]];
     [complaintB setText:[writeup complaintB]];
     [complaintC setText:[writeup complaintC]];
     [complaintD setText:[writeup complaintD]];
     [estimateField setText:[writeup estimate]];
-    //Convert the NSTimeInterval stored in core data into a date format for the date time picker
-    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[writeup datePromised]];
-    [promiseDate setDate:date];
-    //Convert the data from core data into an image to load.
-    UIImage *image = [UIImage imageWithData:[writeup image]];
-    [imageField setImage:image];
     
-    //[[self navigationItem] setTitle:[writeup promiseDate]];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -94,11 +106,23 @@
     [writeup setComplaintC:[complaintC text]];
     [writeup setComplaintD:[complaintD text]];
     [writeup setEstimate:[estimateField text]];
-    [writeup setDatePromised:promiseDate.countDownDuration];
-    NSData *imageData = UIImagePNGRepresentation(imageField);
+    NSData *imageData = [[NSData alloc]initWithData:UIImagePNGRepresentation(theImage)];
     [writeup setImage:imageData];
-    //[writeup setDatePromised:[promiseDate]];
-    //[writeup setImage:[imageField]];
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // this is imporant - we set our input date format to match our string in the field
+    // if format doesn't match you'll get nil from your string, so be careful
+    [dateFormatter setDateFormat:@"dd/MM/yyyy hh:mm"];
+    NSDate *date = [[NSDate alloc] init];
+    
+    date = [dateFormatter dateFromString:self.datePromised.text];
+    
+    NSTimeInterval timeInterval = [date timeIntervalSinceReferenceDate];
+    [writeup setDatePromised:timeInterval];
+    
+    
+    NSSet *myWriteUps = [[NSSet alloc]initWithObjects:writeup, nil];
+    [truck addWriteUps:myWriteUps];
     
 }
 
@@ -107,10 +131,68 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-  
+
+    [scrollView setScrollEnabled:YES];
     
+    [scrollView setContentSize:CGSizeMake(320, 1000)];
+    
+    picker = [[UIDatePicker alloc]init];
+    
+    
+    picker.datePickerMode = UIDatePickerModeDate;
+    
+    [picker addTarget:self action:@selector(changeDateInLabel:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    self.complaintA.delegate =(id)self;
+    self.complaintB.delegate =(id)self;
+    self.complaintC.delegate = (id)self;
+    self.complaintD.delegate = (id)self;
+    self.estimateField.delegate = (id)self;
+    self.datePromised.delegate = (id)self;
+    self.datePromised.inputView = picker;
+    
+    [self.complaintA setReturnKeyType:UIReturnKeyDone];
+    [self.complaintB setReturnKeyType:UIReturnKeyDone];
+    [self.complaintC setReturnKeyType:UIReturnKeyDone];
+    [self.complaintD setReturnKeyType:UIReturnKeyDone];
+    [self.estimateField setReturnKeyType:UIReturnKeyDone];
+}
+- (void)changeDateInLabel:(id)sender{
+    NSDate * time = picker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    
+    NSString *date = [formatter stringFromDate:time];
+    
+    self.datePromised.text = date;
+   
 }
 
+-(void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"picker view selected");
+    NSDate * time = picker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    
+    NSString *date = [formatter stringFromDate:time];
+    
+    self.datePromised.text = date;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [self.complaintA resignFirstResponder];
+    [self.complaintB resignFirstResponder];
+    [self.complaintC resignFirstResponder];
+    [self.complaintD resignFirstResponder];
+    [self.estimateField resignFirstResponder];
+    
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -162,14 +244,14 @@
     imageToSave = (UIImage *) [info objectForKey:
                                UIImagePickerControllerOriginalImage];
     
-    //theImage = imageToSave;
+    theImage = imageToSave;
     
     // Save the new image to the Camera Roll
     UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
     
     NSLog(@"you took a picture");
     // View the image on screen
-    [self.imageField setImage:imageToSave];
+    [self.imageField setImage:theImage];
    
     
     // Tell controller to remove the picker from the view hierarchy and release object.

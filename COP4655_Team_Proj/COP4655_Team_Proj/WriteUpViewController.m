@@ -10,6 +10,7 @@
 
 #import "WriteUpViewController.h"
 #import "WriteUp.h"
+#import "Company.h"
 #import "CompanyStore.h"
 #import "NewWriteUpViewController.h"
 #import "CompanyViewController.h"
@@ -21,7 +22,7 @@
 
 @implementation WriteUpViewController
 
-@synthesize truck;
+@synthesize truck, company;
 
 
 
@@ -30,7 +31,7 @@
     self = [super initWithStyle:style];
     if (self) {
         
-       
+
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                 target:self
@@ -49,12 +50,12 @@
 
 -(void)setTruck:(Truck *)t
 {
-
     truck=t;
-   [ [self navigationItem]setTitle:[truck vin]];
-
-    truck =t;
-
+    [[self navigationItem] setTitle:[truck vin]];
+}
+-(void)setCompany:(Company *)c
+{
+    company = c;
 }
 
 -(IBAction)addNewItem:(id)sender
@@ -64,6 +65,11 @@
     NewWriteUpViewController *newWriteUpViewController = [[NewWriteUpViewController alloc]init];
     
     [newWriteUpViewController setWriteup:newWriteUp];
+    
+    // Edited by Javier Casaudoumecq ------------------------------
+    [newWriteUpViewController setTruck:truck];
+    [newWriteUpViewController setCompany:company];
+    //-------------------------------------------------------------
     
     [newWriteUpViewController setDismissBlock:^{
         [[self tableView] reloadData];
@@ -78,7 +84,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return [[[CompanyStore defaultStore]allCompanies]count];
+    
     return [[truck writeUps]count];
     
 }
@@ -92,9 +98,20 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
+//Luisa's code
+    //WriteUp *w = [[[truck writeUps]allObjects]objectAtIndex:[indexPath row]];
+    //NSString* myNewString = [NSString stringWithFormat:@"%f", [w datePromised]];
+    //cell.textLabel.text=myNewString;
+
+    
+    
     WriteUp *w = [[[truck writeUps]allObjects]objectAtIndex:[indexPath row]];
-    NSString* myNewString = [NSString stringWithFormat:@"%f", [w datePromised]];
-    cell.textLabel.text=myNewString;
+    NSData *theDate = [NSDate dateWithTimeIntervalSince1970:[w datePromised]];
+    
+    NSString* myNewString = [NSString stringWithFormat:@"%@", theDate];
+    cell.textLabel.text= myNewString;
+    
+
     return cell;
     
     
@@ -104,10 +121,22 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WriteUpDetailViewController *writeupdetailviewcontroller = [[WriteUpDetailViewController alloc]init];
-    NSArray *writeups = [[CompanyStore defaultStore]allWriteUps];
-    WriteUp *selectedWriteUp = [writeups objectAtIndex:[indexPath row]];
-    [writeupdetailviewcontroller setWriteUp:selectedWriteUp];
+//Luisa's code
+   // NSArray *writeups = [[CompanyStore defaultStore]allWriteUps];
+    //WriteUp *selectedWriteUp = [writeups objectAtIndex:[indexPath row]];
+    //[writeupdetailviewcontroller setWriteUp:selectedWriteUp];
         
+
+    
+    // Edited by Javier Casaudoumecq ---------------------------------
+    NSArray *writeUps = [[truck writeUps]allObjects ];
+    WriteUp *selectedWriteUp = [writeUps objectAtIndex:[indexPath row]];
+    
+    [writeupdetailviewcontroller setWriteUp:selectedWriteUp];
+    //----------------------------------------------------------------
+    
+    
+
     [[self navigationController]pushViewController:writeupdetailviewcontroller animated:YES];
     
 }

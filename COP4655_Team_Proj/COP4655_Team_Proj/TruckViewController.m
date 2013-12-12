@@ -20,7 +20,7 @@
 
 @implementation TruckViewController
 @synthesize company;
-@synthesize theContext;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,7 +62,7 @@
     
     [newTruckViewController setDismissBlock:^{
         [[self tableView] reloadData];
-        //[company addTrucksObject:newTruck];
+        
     }];
     
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:newTruckViewController];
@@ -91,8 +91,6 @@
     }
     
    
-    
-//    Truck *t = [[[TruckStore defaultStore]allTrucks]objectAtIndex:[indexPath row]];
     
     Truck *tt = [[[company trucks]allObjects]objectAtIndex:[indexPath row]];
     
@@ -124,11 +122,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
    WriteUpViewController *writeupViewController = [[WriteUpViewController alloc]init];
-    NSArray *trucks = [[CompanyStore defaultStore]allTrucks];
+    NSArray *trucks = [[company trucks]allObjects];
     Truck *selectedTruck = [trucks objectAtIndex:[indexPath row]];
        
-    
     [writeupViewController setTruck:selectedTruck];
+    [writeupViewController setCompany:company];
 
     
     [[self navigationController]pushViewController:writeupViewController animated:YES];

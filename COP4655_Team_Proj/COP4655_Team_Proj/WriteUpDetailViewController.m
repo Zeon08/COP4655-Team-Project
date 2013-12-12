@@ -14,7 +14,10 @@
 @end
 
 @implementation WriteUpDetailViewController
+
 @synthesize writeup, complaintAField, complaintBField, complaintCField, complaintDField;
+
+//@synthesize writeUp;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,6 +28,16 @@
     return self;
 }
 
+
+//Javier
+//-(void)setWriteUp:(WriteUp *)w
+//{
+  //  writeUp =w;
+    //NSString *date = [NSString stringWithFormat:@"%f",[w datePromised]];
+    
+    //[[self navigationItem]setTitle:date];
+    
+//}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,6 +49,8 @@
     
     
 }
+
+//Luisa
 -(void) setWriteUp:(WriteUp *)w
 {
     writeup = w;

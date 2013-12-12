@@ -199,7 +199,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     
     [truckViewController setCompany:selectedCompany];
-    [truckViewController setTheContext:companyContext];
+    //[truckViewController setTheContext:companyContext];
     
     [[self navigationController]pushViewController:truckViewController animated:YES];
     
