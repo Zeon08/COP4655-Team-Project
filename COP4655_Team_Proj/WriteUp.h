@@ -21,7 +21,8 @@
 @property (nonatomic, retain) NSString * complaintC;
 @property (nonatomic, retain) NSString * complaintD;
 @property (nonatomic, retain) NSData * image;
-@property (nonatomic) NSTimeInterval datePromised;
+//@property (nonatomic) NSTimeInterval datePromised;
+@property (nonatomic, retain) NSString * datePromised;
 @property (nonatomic, retain) NSString * estimate;
 @property (nonatomic, retain) Truck *truck;
 

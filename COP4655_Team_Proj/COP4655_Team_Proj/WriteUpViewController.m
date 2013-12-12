@@ -106,9 +106,10 @@
     
     
     WriteUp *w = [[[truck writeUps]allObjects]objectAtIndex:[indexPath row]];
-    NSData *theDate = [NSDate dateWithTimeIntervalSince1970:[w datePromised]];
+    //NSData *theDate = [NSDate dateWithTimeIntervalSince1970:[w datePromised]];
     
-    NSString* myNewString = [NSString stringWithFormat:@"%@", theDate];
+    //NSString* myNewString = [NSString stringWithFormat:@"%@", theDate];
+    NSString* myNewString = [w datePromised];
     cell.textLabel.text= myNewString;
     
 

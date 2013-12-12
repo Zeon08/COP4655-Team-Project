@@ -16,13 +16,13 @@
 
 @class WriteUp;
 
-@interface NewWriteUpViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewAccessibilityDelegate,UIImagePickerControllerDelegate>
+@interface NewWriteUpViewController : UIViewController <UINavigationControllerDelegate, UIScrollViewAccessibilityDelegate,UIImagePickerControllerDelegate>
 {
     UIImage *theImage;
     IBOutlet UIScrollView *scrollView;
 }
 @property (strong, nonatomic) IBOutlet UILabel *vinField;
-@property (strong, nonatomic) IBOutlet UILabel *milesField;
+//@property (strong, nonatomic) IBOutlet UILabel *milesField;
 @property (strong, nonatomic) IBOutlet UILabel *makeField;
 @property (strong, nonatomic) IBOutlet UILabel *modelField;
 @property (strong, nonatomic) IBOutlet UILabel *yearField;
@@ -35,13 +35,14 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) UIDatePicker *picker;
 
-@property (strong, nonatomic) IBOutlet UITextField *datePromised;
+//@property (strong, nonatomic) IBOutlet UITextField *datePromised;
 @property (weak, nonatomic) IBOutlet UITextField *complaintA;
 @property (weak, nonatomic) IBOutlet UITextField *complaintB;
 @property (weak, nonatomic) IBOutlet UITextField *complaintC;
 @property (weak, nonatomic) IBOutlet UITextField *complaintD;
 @property (weak, nonatomic) IBOutlet UIImageView *imageField;
 @property (weak, nonatomic) IBOutlet UITextField *estimateField;
+@property (weak, nonatomic) IBOutlet UITextField *datePromisedField;
 @property (nonatomic, strong) WriteUp *writeup;
 @property (nonatomic, copy) void (^dismissBlock)(void);
 

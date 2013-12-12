@@ -17,11 +17,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *complaintDField;
 
 @property (nonatomic, strong) WriteUp *writeup;
+@property (weak, nonatomic) IBOutlet UILabel *estimateField;
+@property (weak, nonatomic) IBOutlet UILabel *datePromisedField;
+@property (weak, nonatomic) IBOutlet UIImageView *imageField;
 
 -(void) setWriteUp:(WriteUp *)w;
 
 
-//@interface WriteUpDetailViewController : UIViewController
-//@property (nonatomic, strong) WriteUp *writeUp;
 
 @end

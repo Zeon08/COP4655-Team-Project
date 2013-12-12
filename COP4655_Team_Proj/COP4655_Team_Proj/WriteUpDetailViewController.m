@@ -15,7 +15,7 @@
 
 @implementation WriteUpDetailViewController
 
-@synthesize writeup, complaintAField, complaintBField, complaintCField, complaintDField;
+@synthesize writeup, complaintAField, complaintBField, complaintCField, complaintDField,estimateField,imageField,datePromisedField;
 
 //@synthesize writeUp;
 
@@ -46,6 +46,14 @@
     complaintBField.text=[writeup complaintB];
     complaintCField.text=[writeup complaintC];
     complaintDField.text=[writeup complaintD];
+    estimateField.text=[writeup estimate];
+    datePromisedField.text=[writeup datePromised];
+    NSData *data = [writeup image];
+    
+    UIImage *image = [[UIImage alloc] initWithData:data];
+    
+    imageField.image=image;
+    
     
     
 }
