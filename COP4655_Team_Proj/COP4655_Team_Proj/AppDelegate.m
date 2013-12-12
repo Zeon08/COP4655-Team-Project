@@ -18,6 +18,8 @@
     // Override point for customization after application launch.
     CompanyViewController *companyViewController = [[CompanyViewController alloc]init];
     
+    companyViewController.managedObjectContext = [[CompanyStore defaultStore]theContext];
+    
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:companyViewController];
     
     [[self window] setRootViewController:navController];

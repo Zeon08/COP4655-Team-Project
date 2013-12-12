@@ -10,6 +10,7 @@
 #import "Company.h"
 #import "Truck.h"
 #import "WriteUp.h"
+#import "CompanyViewController.h"
 
 @implementation CompanyStore
 
@@ -67,11 +68,17 @@
         [self loadAllCompanies];
         [self loadallTrucks];
         [self loadallWriteUps];
+        
+        
 
     }
     return self;
 }
 
+-(NSManagedObjectContext *) theContext
+{
+    return context;
+}
 -(void)loadAllCompanies
 {
     if (!allCompanies) {
@@ -188,10 +195,7 @@
     return allWriteUps;
 }
 
--(NSManagedObjectContext *) theContext
-{
-    return context;
-}
+
 
 -(Company *)createCompany
 {

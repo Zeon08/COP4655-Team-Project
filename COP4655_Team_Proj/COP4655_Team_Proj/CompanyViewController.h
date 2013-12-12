@@ -17,7 +17,15 @@
     UISearchBar *searchBar;
     UISearchDisplayController *searchDisplayController;
     NSMutableArray *searchResults;
+    NSFetchedResultsController  *fetchedResultsController;
+    NSManagedObjectContext      *managedObjectContext;
+    
+    NSArray *fetchedObjects;
+    
 }
+@property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, retain) NSFetchedResultsController    *fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext        *managedObjectContext;
 
 -(IBAction)addNewItem:(id)sender;
 

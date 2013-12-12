@@ -17,7 +17,7 @@
 @end
 
 @implementation CompanyViewController
-
+@synthesize fetchedResultsController, managedObjectContext,searchBar;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -45,6 +45,7 @@
         self.tableView.tableHeaderView = searchBar;
         
         [[self navigationItem] setRightBarButtonItem:bbi];
+        
     }
     return self;
 }
@@ -61,75 +62,37 @@
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller
 shouldReloadTableForSearchString:(NSString *)searchString
 {
-    [searchResults removeAllObjects];
     
-    Company *element;
-    NSArray *companies = [[CompanyStore defaultStore]allCompanies];
-    NSMutableArray *elementText = [[NSMutableArray alloc]init];
-    
-    for(element in companies)
+    // We use an NSPredicate combined with the fetchedResultsController to perform the search
+    if (self.searchBar.text !=nil)
     {
-        
-        [elementText addObject:[element companyName]];
-        
-        NSMutableArray *newGroup = [[NSMutableArray alloc] init];
-        NSString *text;
-        
-        NSLog(@"%@",elementText);
-        for (text in elementText)
-        {
-            if ([text isEqualToString:searchString]) {
-                NSLog(@"%@",text);
-                NSLog(@"Adding");
-                //[newGroup addObject:element];
-                
-            }
-            //            NSRange range = [text rangeOfString:searchString options:NSCaseInsensitiveSearch];
-            //            if (range.length > 0) { //if the substring match
-            //                [newGroup addObject:element]; //add the element to group
-            //            }
-            
-            
-            
-        }
-        if ([newGroup count] > 0) {
-            [searchResults addObject:newGroup];
-        }
-
-
+        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"companyName contains[cd] %@", self.searchBar.text];
+        [fetchedResultsController.fetchRequest setPredicate:predicate];
+    }
+    else
+    {
+        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"All"];
+        [fetchedResultsController.fetchRequest setPredicate:predicate];
     }
     
+    NSError *error = nil;
+    if (![[self fetchedResultsController] performFetch:&error])
+    {
+        // Handle error
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        exit(-1);  // Fail
+    }
     
+    // this array is just used to tell the table view how many rows to show
+    fetchedObjects = fetchedResultsController.fetchedObjects;
+    
+    // dismiss the search keyboard
+    [searchBar resignFirstResponder];
+    
+    // reload the table view
+    [[self tableView] reloadData];
     
 
-
-    
-
-
-
-//    for(element in companies) //take the n group (eg. group1, group2, group3)
-//        //in the original data
-//    {
-//        
-//        NSMutableArray *newGroup = [[NSMutableArray alloc] init];
-//        //Company *element;
-//        
-////        NSRange range = [[element companyName] rangeOfString:searchString
-////                                       options:NSCaseInsensitiveSearch];
-//        
-////        if (range.length > 0) { //if the substring match
-////            [newGroup addObject:element]; //add the element to group
-////        }
-//        if ([[element companyName] isEqualToString:searchString]) {
-//            [newGroup addObject:element]; }
-//        
-//        if ([newGroup count] > 0) {
-//            [searchResults addObject:newGroup];
-//        }
-//        
-//    }
-    
-    
     
     return YES;
 }
@@ -137,8 +100,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
 -(IBAction)addNewItem:(id)sender
 {
     Company *newCompany = [[CompanyStore defaultStore]createCompany];
-    
-    
     
     NewCompanyViewController *newCompanyViewController = [[NewCompanyViewController alloc]init];
     
@@ -159,7 +120,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [searchResults count];
+        return [fetchedObjects count];
         
     } else {
     return [[[CompanyStore defaultStore]allCompanies]count];
@@ -178,7 +139,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     Company *c = [[[CompanyStore defaultStore]allCompanies]objectAtIndex:[indexPath row]];
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        Company *sc = [searchResults objectAtIndex:indexPath.row];
+        Company *sc = [fetchedObjects objectAtIndex:indexPath.row];
         
         cell.textLabel.text = [sc companyName];
     } else {
@@ -195,8 +156,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     NSArray *companies = [[CompanyStore defaultStore]allCompanies];
     Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
     
-    NSManagedObjectContext *companyContext = [[CompanyStore defaultStore]theContext];
-    
     
     [truckViewController setCompany:selectedCompany];
     //[truckViewController setTheContext:companyContext];
@@ -209,6 +168,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super viewDidLoad];
 
+    // NSFetchRequest needed by the fetchedResultsController
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    // NSSortDescriptor tells defines how to sort the fetched results
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"companyName" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    managedObjectContext = [[CompanyStore defaultStore]theContext];
+    // fetchRequest needs to know what entity to fetch
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Company" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    
+    fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
