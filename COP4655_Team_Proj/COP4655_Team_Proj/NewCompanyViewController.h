@@ -17,4 +17,5 @@
 
 @property (nonatomic, strong) Company *company;
 @property (nonatomic, copy) void (^dismissBlock)(void);
+- (IBAction)textFieldReturn:(id)sender;
 @end

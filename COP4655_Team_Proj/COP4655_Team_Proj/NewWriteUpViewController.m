@@ -107,6 +107,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -173,6 +175,11 @@
     // Tell controller to remove the picker from the view hierarchy and release object.
     [self dismissViewControllerAnimated: YES completion: ^{[self doSomethingElse];} ];
     
+}
+
+- (IBAction)textFieldReturn:(id)sender {
+    
+    [sender resignFirstResponder];
 }
 
 - (void) doSomethingElse {

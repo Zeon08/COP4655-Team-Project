@@ -11,7 +11,7 @@
 
 @class Truck;
 @class Company;
-@interface NewTruckViewController : UIViewController <UINavigationControllerDelegate>
+@interface NewTruckViewController : UIViewController <UINavigationControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic)IBOutlet UITextField * vinField;
 @property (weak, nonatomic)IBOutlet UITextField * modelField;
 @property (weak, nonatomic)IBOutlet UITextField * makeField;
@@ -20,6 +20,6 @@
 @property (nonatomic, strong) Truck *truck;
 @property (nonatomic, strong) Company *company;
 @property (nonatomic, copy) void (^dismissBlock)(void);
-
+- (IBAction)textFieldReturn:(id)sender;
 
 @end

@@ -65,11 +65,17 @@
     [[self navigationItem] setTitle:[company companyName]];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+  //  [textField resignFirstResponder];
+    //return YES;
+//}
+
+- (IBAction)textFieldReturn:(id)sender {
+    
+    [sender resignFirstResponder];
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {

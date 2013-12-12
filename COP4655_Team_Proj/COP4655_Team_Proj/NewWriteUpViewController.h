@@ -32,6 +32,6 @@
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
 - (IBAction)takePhoto:(id)sender;
-
+- (IBAction)textFieldReturn:(id)sender;
 
 @end

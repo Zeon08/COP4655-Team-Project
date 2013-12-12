@@ -7,12 +7,14 @@
 //
 
 #import "WriteUpDetailViewController.h"
+#import "WriteUp.h"
 
 @interface WriteUpDetailViewController ()
 
 @end
 
 @implementation WriteUpDetailViewController
+@synthesize writeup, complaintAField, complaintBField, complaintCField, complaintDField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +29,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    complaintAField.text=[writeup complaintA];
+    complaintBField.text=[writeup complaintB];
+    complaintCField.text=[writeup complaintC];
+    complaintDField.text=[writeup complaintD];
+    
+    
 }
+-(void) setWriteUp:(WriteUp *)w
+{
+    writeup = w;
+    [[self navigationItem] setTitle:[writeup estimate]];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

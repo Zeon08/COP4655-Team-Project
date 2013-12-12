@@ -72,11 +72,7 @@
     [[self navigationItem] setTitle:[truck vin]];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -93,7 +89,10 @@
     [company addTrucks:myTrucks];
 }
 
-
+- (IBAction)textFieldReturn:(id)sender {
+    
+    [sender resignFirstResponder];
+}
 
 - (void)viewDidLoad
 {

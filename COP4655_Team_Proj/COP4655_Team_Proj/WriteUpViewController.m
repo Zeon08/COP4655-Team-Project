@@ -30,7 +30,7 @@
     self = [super initWithStyle:style];
     if (self) {
         
-        //UINavigationItem *n = [self navigationItem];
+       
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                 target:self
@@ -92,14 +92,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    
-    
-    //    Truck *t = [[[TruckStore defaultStore]allTrucks]objectAtIndex:[indexPath row]];
-    
     WriteUp *w = [[[truck writeUps]allObjects]objectAtIndex:[indexPath row]];
     NSString* myNewString = [NSString stringWithFormat:@"%f", [w datePromised]];
     cell.textLabel.text=myNewString;
-    //NSString stringWithFormat:@"%d", myInt]
     return cell;
     
     
@@ -109,24 +104,13 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WriteUpDetailViewController *writeupdetailviewcontroller = [[WriteUpDetailViewController alloc]init];
-    ///TruckViewController *truckViewController = [[TruckViewController alloc]init];
-    //NSArray *companies = [[CompanyStore defaultStore]allCompanies];
-    //Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
-    
-    //NSManagedObjectContext *companyContext = [[CompanyStore defaultStore]theContext];
-    
-    
-    //[truckViewController setCompany:selectedCompany];
-    //[truckViewController setTheContext:companyContext];
-    
+    NSArray *writeups = [[CompanyStore defaultStore]allWriteUps];
+    WriteUp *selectedWriteUp = [writeups objectAtIndex:[indexPath row]];
+    [writeupdetailviewcontroller setWriteUp:selectedWriteUp];
+        
     [[self navigationController]pushViewController:writeupdetailviewcontroller animated:YES];
     
-    
 }
-
-
-
-
 
 - (void)viewDidLoad
 {

@@ -329,6 +329,38 @@
 					</object>
 					<int key="connectionID">3</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">complaintAField</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="544896478"/>
+					</object>
+					<int key="connectionID">39</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">complaintBField</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="941975564"/>
+					</object>
+					<int key="connectionID">40</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">complaintCField</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="714117526"/>
+					</object>
+					<int key="connectionID">41</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">complaintDField</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1042764313"/>
+					</object>
+					<int key="connectionID">42</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -346,7 +378,6 @@
 							<reference ref="969179555"/>
 							<reference ref="862439543"/>
 							<reference ref="168187669"/>
-							<reference ref="544896478"/>
 							<reference ref="1042764313"/>
 							<reference ref="714117526"/>
 							<reference ref="941975564"/>
@@ -354,6 +385,7 @@
 							<reference ref="720287990"/>
 							<reference ref="69107117"/>
 							<reference ref="107960002"/>
+							<reference ref="544896478"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -453,13 +485,37 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">38</int>
+			<int key="maxID">42</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">WriteUpDetailViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="complaintAField">UILabel</string>
+						<string key="complaintBField">UILabel</string>
+						<string key="complaintCField">UILabel</string>
+						<string key="complaintDField">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="complaintAField">
+							<string key="name">complaintAField</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="complaintBField">
+							<string key="name">complaintBField</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="complaintCField">
+							<string key="name">complaintCField</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="complaintDField">
+							<string key="name">complaintDField</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/WriteUpDetailViewController.h</string>
