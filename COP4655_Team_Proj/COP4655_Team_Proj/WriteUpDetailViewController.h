@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WriteUp.h"
 @interface WriteUpDetailViewController : UIViewController
-
+@property (nonatomic, strong) WriteUp *writeUp;
 @end

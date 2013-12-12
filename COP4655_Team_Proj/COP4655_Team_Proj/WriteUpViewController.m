@@ -31,7 +31,6 @@
     self = [super initWithStyle:style];
     if (self) {
         
-        //UINavigationItem *n = [self navigationItem];
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                 target:self
@@ -50,7 +49,6 @@
 
 -(void)setTruck:(Truck *)t
 {
-
     truck=t;
     [[self navigationItem] setTitle:[truck vin]];
 }
@@ -66,8 +64,11 @@
     NewWriteUpViewController *newWriteUpViewController = [[NewWriteUpViewController alloc]init];
     
     [newWriteUpViewController setWriteup:newWriteUp];
+    
+    // Edited by Javier Casaudoumecq ------------------------------
     [newWriteUpViewController setTruck:truck];
     [newWriteUpViewController setCompany:company];
+    //-------------------------------------------------------------
     
     [newWriteUpViewController setDismissBlock:^{
         [[self tableView] reloadData];
@@ -82,7 +83,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return [[[CompanyStore defaultStore]allCompanies]count];
+    
     return [[truck writeUps]count];
     
 }
@@ -98,12 +99,12 @@
     
     
     
-    //    Truck *t = [[[TruckStore defaultStore]allTrucks]objectAtIndex:[indexPath row]];
-    
     WriteUp *w = [[[truck writeUps]allObjects]objectAtIndex:[indexPath row]];
-    NSString* myNewString = [NSString stringWithFormat:@"%f", [w datePromised]];
-    cell.textLabel.text=myNewString;
-    //NSString stringWithFormat:@"%d", myInt]
+    NSData *theDate = [NSDate dateWithTimeIntervalSince1970:[w datePromised]];
+    
+    NSString* myNewString = [NSString stringWithFormat:@"%@", theDate];
+    cell.textLabel.text= myNewString;
+    
     return cell;
     
     
@@ -114,15 +115,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WriteUpDetailViewController *writeupdetailviewcontroller = [[WriteUpDetailViewController alloc]init];
     
-    ///TruckViewController *truckViewController = [[TruckViewController alloc]init];
-    //NSArray *companies = [[CompanyStore defaultStore]allCompanies];
-    //Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
+    // Edited by Javier Casaudoumecq ---------------------------------
+    NSArray *writeUps = [[truck writeUps]allObjects ];
+    WriteUp *selectedWriteUp = [writeUps objectAtIndex:[indexPath row]];
     
-    //NSManagedObjectContext *companyContext = [[CompanyStore defaultStore]theContext];
+    [writeupdetailviewcontroller setWriteUp:selectedWriteUp];
+    //----------------------------------------------------------------
     
     
-    //[truckViewController setCompany:selectedCompany];
-    //[truckViewController setTheContext:companyContext];
     
     [[self navigationController]pushViewController:writeupdetailviewcontroller animated:YES];
     

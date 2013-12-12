@@ -13,7 +13,7 @@
 @end
 
 @implementation WriteUpDetailViewController
-
+@synthesize writeUp;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -23,6 +23,14 @@
     return self;
 }
 
+-(void)setWriteUp:(WriteUp *)w
+{
+    writeUp =w;
+    NSString *date = [NSString stringWithFormat:@"%f",[w datePromised]];
+    
+    [[self navigationItem]setTitle:date];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

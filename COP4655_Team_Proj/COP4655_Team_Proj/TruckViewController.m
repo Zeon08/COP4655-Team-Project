@@ -20,7 +20,7 @@
 
 @implementation TruckViewController
 @synthesize company;
-@synthesize theContext;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,7 +62,7 @@
     
     [newTruckViewController setDismissBlock:^{
         [[self tableView] reloadData];
-        //[company addTrucksObject:newTruck];
+        
     }];
     
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:newTruckViewController];

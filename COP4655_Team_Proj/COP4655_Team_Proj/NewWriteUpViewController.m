@@ -19,7 +19,7 @@
 
 @implementation NewWriteUpViewController
 @synthesize writeup,company,truck;
-@synthesize dismissBlock;
+@synthesize dismissBlock, picker;
 @synthesize complaintA, complaintB, complaintC, complaintD, estimateField, imageField;
 @synthesize vinField,milesField,makeField,modelField,yearField,nameField,addressField,phoneField;
 @synthesize scrollView;
@@ -49,7 +49,6 @@
 {
     writeup = w;
     
-    //[[self navigationItem] setTitle:[writeup datePromised]];
 }
 -(void)setCompany:(Company *)c
 {
@@ -94,21 +93,6 @@
     [complaintD setText:[writeup complaintD]];
     [estimateField setText:[writeup estimate]];
     
-    //Convert the NSTimeInterval stored in core data into a date format for the date time picker
-//    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[writeup datePromised]];
-    //[promiseDate setDate:date];
-    //Convert the data from core data into an image to load.
-    UIImage *image = [UIImage imageWithData:[writeup image]];
-    
-    
-    
-    //[[self navigationItem] setTitle:[writeup promiseDate]];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -122,11 +106,23 @@
     [writeup setComplaintC:[complaintC text]];
     [writeup setComplaintD:[complaintD text]];
     [writeup setEstimate:[estimateField text]];
-//    [writeup setDatePromised:promiseDate.countDownDuration];
-    //NSData *imageData = UIImagePNGRepresentation(imageField);
-    //[writeup setImage:imageData];
-    //[writeup setDatePromised:[promiseDate]];
-    //[writeup setImage:[imageField]];
+    NSData *imageData = [[NSData alloc]initWithData:UIImagePNGRepresentation(theImage)];
+    [writeup setImage:imageData];
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // this is imporant - we set our input date format to match our string in the field
+    // if format doesn't match you'll get nil from your string, so be careful
+    [dateFormatter setDateFormat:@"dd/MM/yyyy hh:mm"];
+    NSDate *date = [[NSDate alloc] init];
+    
+    date = [dateFormatter dateFromString:self.datePromised.text];
+    
+    NSTimeInterval timeInterval = [date timeIntervalSinceReferenceDate];
+    [writeup setDatePromised:timeInterval];
+    
+    
+    NSSet *myWriteUps = [[NSSet alloc]initWithObjects:writeup, nil];
+    [truck addWriteUps:myWriteUps];
     
 }
 
@@ -137,9 +133,65 @@
     // Do any additional setup after loading the view from its nib.
     [scrollView setScrollEnabled:YES];
     
-    [scrollView setContentSize:CGSizeMake(320, 900)];
+    [scrollView setContentSize:CGSizeMake(320, 1000)];
+    
+    picker = [[UIDatePicker alloc]init];
+    
+    
+    picker.datePickerMode = UIDatePickerModeDate;
+    
+    [picker addTarget:self action:@selector(changeDateInLabel:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    self.complaintA.delegate =(id)self;
+    self.complaintB.delegate =(id)self;
+    self.complaintC.delegate = (id)self;
+    self.complaintD.delegate = (id)self;
+    self.estimateField.delegate = (id)self;
+    self.datePromised.delegate = (id)self;
+    self.datePromised.inputView = picker;
+    
+    [self.complaintA setReturnKeyType:UIReturnKeyDone];
+    [self.complaintB setReturnKeyType:UIReturnKeyDone];
+    [self.complaintC setReturnKeyType:UIReturnKeyDone];
+    [self.complaintD setReturnKeyType:UIReturnKeyDone];
+    [self.estimateField setReturnKeyType:UIReturnKeyDone];
+}
+- (void)changeDateInLabel:(id)sender{
+    NSDate * time = picker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    
+    NSString *date = [formatter stringFromDate:time];
+    
+    self.datePromised.text = date;
+    
 }
 
+-(void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"picker view selected");
+    NSDate * time = picker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    
+    NSString *date = [formatter stringFromDate:time];
+    
+    self.datePromised.text = date;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [self.complaintA resignFirstResponder];
+    [self.complaintB resignFirstResponder];
+    [self.complaintC resignFirstResponder];
+    [self.complaintD resignFirstResponder];
+    [self.estimateField resignFirstResponder];
+    
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -198,7 +250,7 @@
     
     NSLog(@"you took a picture");
     // View the image on screen
-    [self.imageField setImage:imageToSave];
+    [self.imageField setImage:theImage];
    
     
     // Tell controller to remove the picker from the view hierarchy and release object.

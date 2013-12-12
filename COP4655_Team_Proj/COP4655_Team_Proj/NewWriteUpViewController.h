@@ -16,7 +16,7 @@
 
 @class WriteUp;
 
-@interface NewWriteUpViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewAccessibilityDelegate>
+@interface NewWriteUpViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewAccessibilityDelegate,UIImagePickerControllerDelegate>
 {
     UIImage *theImage;
     IBOutlet UIScrollView *scrollView;
@@ -33,7 +33,7 @@
 @property (strong, nonatomic) Company *company;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
+@property (nonatomic, retain) UIDatePicker *picker;
 
 @property (strong, nonatomic) IBOutlet UITextField *datePromised;
 @property (weak, nonatomic) IBOutlet UITextField *complaintA;

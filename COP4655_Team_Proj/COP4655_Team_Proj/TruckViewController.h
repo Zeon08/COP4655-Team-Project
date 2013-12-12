@@ -19,6 +19,6 @@
 }
 
 @property (nonatomic, strong) Company *company;
-@property (nonatomic, strong) NSManagedObjectContext *theContext;
+
 -(IBAction)addNewTruck:(id)sender;
 @end
