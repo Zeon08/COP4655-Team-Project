@@ -149,18 +149,24 @@ shouldReloadTableForSearchString:(NSString *)searchString
 
 }
 
-- (void)tableView:(UITableView *)aTableView
+- (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TruckViewController *truckViewController = [[TruckViewController alloc]init];
     NSArray *companies = [[CompanyStore defaultStore]allCompanies];
     Company *selectedCompany = [companies objectAtIndex:[indexPath row]];
     
-    
-    [truckViewController setCompany:selectedCompany];
-    //[truckViewController setTheContext:companyContext];
-    
-    [[self navigationController]pushViewController:truckViewController animated:YES];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        NSLog(@"we are in the search");
+        Company *sc = [fetchedObjects objectAtIndex:indexPath.row];
+        [truckViewController setCompany:sc];
+        [[self navigationController]pushViewController:truckViewController animated:YES];
+    }
+    else
+    {
+        [truckViewController setCompany:selectedCompany];
+        [[self navigationController]pushViewController:truckViewController animated:YES];
+    }
     
     
 }
@@ -184,11 +190,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // Sets the search display controllers delegate and data source for searches.
+    [searchDisplayController setDelegate:(id)self];
+    [searchDisplayController setSearchResultsDataSource:self];
+    [searchDisplayController setSearchResultsDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -201,44 +206,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
