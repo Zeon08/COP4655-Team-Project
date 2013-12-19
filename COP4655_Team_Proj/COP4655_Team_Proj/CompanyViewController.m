@@ -5,7 +5,7 @@
 //  Created by Javier Casaudoumecq on 12/4/13.
 //  Copyright (c) 2013 Javier Casaudoumecq. All rights reserved.
 //
-
+#import <Parse/Parse.h>
 #import "CompanyViewController.h"
 #import "Company.h"
 #import "CompanyStore.h"
@@ -174,6 +174,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super viewDidLoad];
 
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    [testObject setObject:@"bar" forKey:@"foo"];
+    [testObject save];
+    
+    
     // NSFetchRequest needed by the fetchedResultsController
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     

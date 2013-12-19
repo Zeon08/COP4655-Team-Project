@@ -5,15 +5,22 @@
 //  Created by Javier Casaudoumecq on 11/25/13.
 //  Copyright (c) 2013 Javier Casaudoumecq. All rights reserved.
 //
-
+#import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "CompanyViewController.h"
 #import "CompanyStore.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Parse setApplicationId:@"zd8dnsZG7ZZqpUIgr27VOajrEQoMNhwE8w2bS2Jm"
+                  clientKey:@"j8lnqfvGVD4EIYQLBeKuQhcLCFsUdY3c0d31FrNJ"];
+
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     CompanyViewController *companyViewController = [[CompanyViewController alloc]init];

@@ -10,6 +10,7 @@
 #import "Company.h"
 #import "NewCompanyViewController.h"
 #import "TruckViewController.h"
+#import "Parse/Parse.h"
 
 @interface CompanyViewController : UITableViewController
 <UISearchBarDelegate>
